@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>O regresso do Aleph Bot | Bits & Bots</title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="O regresso do Aleph Bot | Bits & Bots">
+    <meta property="og:title" content="O regresso do Aleph Bot | Bits & Bots">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+
+  
+  <h1 class="title">O regresso do Aleph Bot</h1>
+  
+  
+  
+  
+  <p class="date">Alchimista - Friday, June 9, 2017
+  
+
+  </p>
+
+  <div class="body"><p><a href="https://commons.wikimedia.org/wiki/File%3ABot_Sketch_Eric_Benacek.jpg" title="Por Eric Benacek from Paris, France (Bot) [CC BY-SA 2.0 (http://creativecommons.org/licenses/by-sa/2.0)], undefined"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Bot_Sketch_Eric_Benacek.jpg/256px-Bot_Sketch_Eric_Benacek.jpg" alt="Bot Sketch Eric Benacek"></a></p>
+<p><em>Nota: este post foi publicado originalmente em <a href="https://bitsebots.blogs.sapo.pt/o-regresso-do-aleph-bot-4880">https://bitsebots.blogs.sapo.pt/o-regresso-do-aleph-bot-4880</a></em></p>
+<p><strong><em>Após uma paragem que durou anos, o Aleph Bot, o bot anti-vandalismo que faz companhia ao Salebot regressa ao activo.</em></strong></p>
+<p>O <a href="http://pt.wikipedia.org/wiki/Usu%C3%A1ria:Aleph_Bot">Aleph_Bot</a> começou a operar em 2010, tendo como base o código do <a href="https://es.wikipedia.org/wiki/Usuario:AVBOT">AVBOT</a>, um robô desenvolvido por <a href="https://es.wikipedia.org/wiki/Usuario:Emijrp">Emijrp</a>, um editor da Wikipédia em Espanhol, e era precisamente por lá que operava. Tratava-se de um código extremamente interessante, onde, em comparação com o do <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a">Salebot</a>:Salebot), outro robô anti-vandalismo que opera na pt.wp, trazia inovações como a diferenciação do tipo de edição - edição de testes, vandalismo ou branqueio de página, avisos específicos para o tipo de edição, assim como o reportar de utilizadores que apesar dos avisos reincidem nas edições.</p>
+<p>Apesar de no início a adaptação à wikipédia Lusófona ter corrido a bom ritmo, a verdade é as especificidades da wikipédia em língua espanhola estavam embutidas no código, não separadas em variáveis, e se é verdade que houve uma tentativa de reescrever essas especificidades em variáveis localizáveis, com o passar do tempo o código do Aleph foi divergindo da versão original cada vez mais, até ficar complicada a sua manutenção, e deu-se a inevitável depreciação.</p>
+<p>A ideia de criar um novo código surgiu ainda o Aleph estava ao serviço, aproveitando as ideias do AVBOT mas num código mais flexível, e onde as variáveis de configuração estivessem o mais longe possível do código, permitindo mais flexibilidade, e ao mesmo tempo, que o código pude-se ser usado noutros projectos. A primeira tentativa deu-se com o python 2.7, assentando no <a href="https://en.wikipedia.org/wiki/Twisted_(software">Twisted</a>), e indo buscar as mudanças recentes ao irc. Foram bons tempos, mas ao mesmo tempo momentos frustrantes, com imensos <strong>UnicodeDecodeError</strong> a saltitar por tudo o que era canto. Aliado a isto, noticias de uma possível depreciação do servido de mudanças recentes no irc deixaram-me relutante em continuar por um caminho que poderia estar condenado, então a certo ponto decidi aguardar, e o Aleph caiu na penumbra.</p>
+<p>Uns tempos mais tarde, decidi voltar à carga, desta vez começando do zero, e já com o python 3. E que diferença tremenda. Por muitas discussões em redor da questão py3/py2, a verdade é que especialmente para trabalhar com artigos da wikipédia, o py3 é uma enorme lufada de ar fresco, tirando, é claro, o caso particular das predefinições do wikitexto, onde chego a ter pérolas como esta:  "{{{{Subst:{0}{3}.css|{1}|{2}|{3}}}}}".format(msg, ptitle, oldid, aleph_warns, bv)</p>
+<p>Se o irc já tinha recuperado o seu estatuto de intocável, o <a href="https://wikitech.wikimedia.org/wiki/RCStream">RCStream</a> apresentava-se como uma excelente alternativa, até porque fornecia mais informação do que o irc, e de uma forma mais estruturada, então o código que estava a nascer foi adaptado para usar este novo sistema. Infelizmente teve um tempo de vida curto, porque pouco depois de começar a usa-lo, foi depreciado em favor do <a href="https://wikitech.wikimedia.org/wiki/EventStreams">EventStreams</a>. Neste caso, a modificação não foi muito custosa.</p>
+<p>Como é óbvio, a parte mais custosa de todo o processo é determinar se uma edição deve ou não ser revertida, e como o bot tenta fazer a distinção entre edições de teste ou vandalismos óbvios, as complicações aumentam. Na implementação actual, que espero vir a descrever mais pormenorizadamente no futuro, há uma contabilização das expressões problemáticas que ocorrem nas linhas adicionadas e removidas, e após o saldo entre as duas, contabiliza-se a pontuação. No final, todas as expressões encontradas dão origem a uma pré-classificação do género {'T': -12, 'G': 2, 'V': 0}. Com esta classificação, o passo seguinte é determinar a classificação da edição e o seu valor, entrando então um sistema de análise de pontuação. De uma forma simples, se a pontuação de vandalismo ou teste é inferior a um valor definido, a edição é classificada como tal, se for superior ao limite definido, é classificada como boa, e se ficar entre um intervalo definido como limbo, tenta usar o <a href="https://www.mediawiki.org/wiki/ORES">ORES</a> ( um sistema de inteligência artificial), para verificar se a edição deve ser revertida.</p>
+<p>No caso de reversão, ocorre ainda a verificação se o penúltimo editor não é o bot, ou o Salebot, a fim de evitar guerras de edições, a reversão e a posterior notificação. Ao enviar a notificação, o bot verifica se existem mais avisos, e futuramente será implementado um sistema de notificação na wiki quando se verifica que há um utilizador já com inúmeros avisos. Na verdade, a partir do momento em que o código estabiliza e os bugs com o <strong><em>core code</em></strong> do bot desaparecem, a ideia é implementar um sistema de notificações na wiki de situações que convém análise humana, nomeadamente os tais editores com muitos avisos, ou edições do bot revertidas. Na prática, o Aleph é eternamente um projecto em curso.</p>
+<p>Paralelamente ao desenvolvimento do código em si, há um painel de controlo em desenvolvimento em <a href="https://tools.wmflabs.org/aleph/">https://tools.wmflabs.org/aleph/</a>. Recorrendo ao <a href="https://www.mediawiki.org/wiki/Help:OAuth">OAuth</a>, é possível utilizadores da wikipédia autenticarem-se, e no caso de serem administradores, conseguem parar o Aleph. Há alguns dados sobre o estado do script no <a href="https://wikitech.wikimedia.org/wiki/Help:Tool_Labs/Grid">grid engine</a>, que por agora apenas são despejados sem grande tratamento, mas o plano é que a partir desse painel se tenha acesso às análises do bot, assim como controlar alguns dos seus parâmetros.</p>
+</div>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2024 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a):Alchimista">pt.wikipedia</a>, <a href="https://gitlab.wikimedia.org/alchimista">gitlab.wikimedia</a>,<a href="http://github.com/alchimista">github</a>.
+      </div>
+    </div>
+  </body>
+</html>
