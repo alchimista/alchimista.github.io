@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>Configuração de uma VPN FLUP no Ubuntu | Bits & Bots</title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="Configuração de uma VPN FLUP no Ubuntu | Bits & Bots">
+    <meta property="og:title" content="Configuração de uma VPN FLUP no Ubuntu | Bits & Bots">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+
+  
+  <h1 class="title">Configuração de uma VPN FLUP no Ubuntu</h1>
+  
+  
+  
+  
+  <p class="date">Alchimista - Saturday, December 28, 2024
+  
+
+  </p>
+
+  <div class="body"><p>Recentemente precisei de consultar uns artigos científicos, e para tal necessitei de aceder através da VPN da FLUP em linux, algo que não se encontra documentado. Após várias tentativas frustradas de configuração, e até porque tinha já configurado o meu acesso à VPN da FEUP de forma simples, bastando seguir as <a href="https://www.up.pt/portal/pt/updigital/servicos/redes-conetividade/configuracao-manual-feup-ubuntu-pptp/">instruções fornecidas</a>, reparo que na documentação de configuração em windows, o nome usado para a ligação de exemplo é "<em>VPN FLUP SSTP</em>". Volto a abrir as instruções para a FEUP, e reparo que aí é usado o PPTP em vez do SSTP.</p>
+<p>Não vou entrar em grandes discussões sobre o porquê de num dos casos ter de me ligar por um método obsoleto e com problemas de segurança, e noutro através de um protocolo proprietário, deixo para alguém mais entendido. Talvez nunca tenham ouvido falar de <a href="https://en.wikipedia.org/wiki/OpenVPN">OpenVPN</a>.</p>
+<p>Mas como configurar a VPN da FLUP no ubunto? Simples, instalando o sstp-client.
+Para tal, começamos por fazer o update do sistema com</p>
+<blockquote><p>$ sudo apt update
+$ sudo apt upgrade</p>
+<p>e de seguida instalamos o sstp-client
+sudo apt install sstp-client &gt;</p>
+</blockquote>
+<p>Com a instalação concluída, vamos a <strong>Definições</strong> -&gt; <strong>rede</strong> -&gt; <strong>VPN</strong> e clicamos no + para adicionar uma nova VPN,
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Ubuntu_SSTP_VPN_configuration_01.png" alt="Alchimista, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, através da wiki Wikimedia Commons">
+ e selecionamos a opção Protocolo de tunelamento de socket seguro (SSTP),
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Ubuntu_SSTP_VPN_configuration_02.png" alt="Alchimista, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, através da wiki Wikimedia Commons">
+e no menu identidade definimos o nome que pretendemos para a rede, adicionamos o gateway vpn.letras.up.pt e a credencial de acesso.
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Ubuntu_SSTP_VPN_configuration_03.png" alt="&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Ubuntu_SSTP_VPN_configuration_03.png&quot;&gt;Alchimista&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0&quot;&gt;CC BY-SA 4.0&lt;/a&gt;, através da wiki Wikimedia Commons"></p>
+<p>Clicamos em aplicar, e selecionamos a VPN. Na primeira ligação irá pedir a password da conta UP, e de seguida, a correr tudo bem, estamos ligados à VPN da FLUP.</p>
+</div>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2024 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a):Alchimista">pt.wikipedia</a>, <a href="https://gitlab.wikimedia.org/alchimista">gitlab.wikimedia</a>,<a href="http://github.com/alchimista">github</a>.
+      </div>
+    </div>
+  </body>
+</html>
