@@ -131,3 +131,16 @@ img {
     margin-right: auto;
     width: 50%;
 }
+
+.cc-collections-guide img {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  display: block;
+  margin: 2rem auto; /* opcional, para espaçamento */
+}
+
+.compatibility-chart img {
+  width: 100% !important;
+  max-width: none !important;
+}
