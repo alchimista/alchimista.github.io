@@ -1,0 +1,535 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>Understanding Creative Commons Licenses: Collections vs. Remixes | Bits & Bots</title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="Understanding Creative Commons Licenses: Collections vs. Remixes | Bits & Bots">
+    <meta property="og:title" content="Understanding Creative Commons Licenses: Collections vs. Remixes | Bits & Bots">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+
+  
+  <h1 class="title">Understanding Creative Commons Licenses: Collections vs. Remixes</h1>
+  
+  
+  
+  
+  <p class="date">André Barbosa - Sunday, November 23, 2025
+  
+
+  </p>
+
+  <div class="body"><style>
+.cc-collections-guide {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  color: #2c3e50;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro-section {
+  background: #f8f9fa;
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.intro-section ul {
+  margin: 1.5rem 0 0 1.5rem;
+}
+
+.intro-section li {
+  margin-bottom: 0.7rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.subsection-title {
+  font-size: 1.4rem;
+  color: #495057;
+  margin: 2rem 0 1rem 0;
+}
+
+.definition {
+  background: #ffffff;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.definition p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.content-box {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+.content-box h4 {
+  margin: 0 0 1rem 0;
+  color: #495057;
+}
+
+.content-box ul {
+  margin: 0.5rem 0 0 1.5rem;
+}
+
+.content-box li {
+  margin-bottom: 0.7rem;
+}
+
+.important-note {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.important-note strong {
+  color: #856404;
+}
+
+.critical-note {
+  background: #f8d7da;
+  border-left: 4px solid #dc3545;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.critical-note strong {
+  color: #721c24;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.collection-item {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.collection-item img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.collection-item h3 {
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.collection-item p {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.attribution {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  line-height: 1.5;
+}
+
+.attribution a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+.license-info {
+  background: #e7f3ff;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 2rem 0;
+}
+
+.license-info p {
+  margin-bottom: 0.5rem;
+}
+
+.license-badge {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.comparison-table th {
+  background: #f8f9fa;
+  color: #2c3e50;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.comparison-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.chart-section {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.chart-section img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 1.5rem 0;
+}
+
+.footer-license {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 3rem 0 2rem 0;
+  border-top: 3px solid #667eea;
+}
+
+.footer-license h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.footer-license a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.footer-license a:hover {
+  text-decoration: underline;
+}
+
+.footer-license ul {
+  margin: 1rem 0 0 1.5rem;
+}
+
+.footer-license li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-table {
+    font-size: 0.9rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem;
+  }
+
+  .intro-section,
+  .content-box,
+  .footer-license {
+    padding: 1.5rem;
+  }
+}
+</style><div class="cc-collections-guide">
+
+<div class="intro-section">
+<p><strong>Understanding the difference between collections and remixes is essential when working with Creative Commons licensed content.</strong></p>
+<p>This guide will help you understand:</p>
+<ul>
+<li>What collections are and how to license them properly</li>
+<li>What remixes and adaptations are and their licensing requirements</li>
+<li>Practical examples with real CC-licensed content from Porto</li>
+<li>How to properly attribute works in both scenarios</li>
+</ul>
+</div><h2 class="section-title">What is a Collection?</h2><div class="definition">
+<p>A <strong>collection</strong> is a gathering of separate, independent works that remain distinct and unmodified. Think of it as a playlist, anthology, or gallery where each item maintains its individual identity.</p>
+</div><div class="content-box">
+<h4>Key Characteristics</h4>
+<ul>
+<li>Works maintain their individual identity and integrity</li>
+<li>No creative adaptation or transformation occurs</li>
+<li>Works can be easily separated from the collection</li>
+<li>Like organizing books on a shelf—each book remains unchanged and complete</li>
+</ul>
+</div><h3 class="subsection-title">Common Examples</h3>
+<ul>
+<li><strong>Photo galleries or exhibitions</strong> — Curated sets of images displayed together</li>
+<li><strong>Music playlists</strong> — Songs arranged in a specific order</li>
+<li><strong>Curated resource lists</strong> — Educational materials organized by topic</li>
+<li><strong>Educational content packages</strong> — Multiple learning resources bundled together</li>
+<li><strong>Anthology publications</strong> — Multiple writings by different authors</li>
+</ul>
+
+<h2 class="section-title">Licensing Considerations for Collections</h2>
+
+<div class="important-note">
+<p><strong>Important:</strong> Each work in a collection keeps its original license. You cannot change the license of the individual works—you can only license the collection itself (the selection and arrangement).</p>
+</div>
+
+<h3 class="subsection-title">What You Must Do</h3><ul>
+<li><strong>Provide proper attribution</strong> for each work included, following the original license requirements</li>
+<li><strong>Respect all license conditions</strong> (NC, ND, SA) of each individual work</li>
+<li><strong>Choose your own license</strong> for the collection itself (the creative act of selection and arrangement)</li>
+<li><strong>Clearly distinguish</strong> between licenses for individual works and the collection as a whole</li>
+<li><strong>Maintain original licenses</strong> — Don't misrepresent or alter the licensing of included works</li>
+</ul><div class="content-box">
+<p><strong>Example:</strong> If you create a photo collection, Photo A might be CC BY, Photo B might be CC BY-SA, and Photo C might be CC BY-NC. Each photo maintains its original license. However, your creative selection and arrangement of these photos can be licensed separately—perhaps as CC BY-SA for the collection itself.</p>
+</div><h2 class="section-title">What is a Remix or Adaptation?</h2><div class="definition">
+<p>A <strong>remix, adaptation, or derivative work</strong> is created when you modify, transform, or build upon existing work in a creative way. The original work becomes part of something new through creative transformation.</p>
+</div><div class="content-box">
+<h4>Key Characteristics</h4>
+<ul>
+<li>Original work is modified or transformed in some way</li>
+<li>Creative changes are made to the source material</li>
+<li>New creative expression is added or original is altered</li>
+<li>Like making a smoothie—individual ingredients are blended together into something new</li>
+</ul>
+</div><h3 class="subsection-title">Common Examples</h3>
+<ul>
+<li><strong>Translations</strong> — Converting text from one language to another</li>
+<li><strong>Music mashups</strong> — Combining elements from two or more songs</li>
+<li><strong>Image editing</strong> — Cropping, adjusting colors, adding filters or effects</li>
+<li><strong>Literary adaptations</strong> — Converting a story into a screenplay or different medium</li>
+<li><strong>Modified graphics</strong> — Changing elements of an illustration or design</li>
+<li><strong>Video edits</strong> — Cutting, rearranging, or enhancing video content</li>
+<li><strong>Annotated versions</strong> — Adding commentary or notes to original text</li>
+</ul>
+
+<h2 class="section-title">Licensing Considerations for Remixes</h2>
+
+<div class="critical-note">
+<p><strong>Critical Restriction:</strong> You can only create remixes from works that don't have the "ND" (NoDerivatives) restriction. If a work is licensed with ND (like CC BY-ND or CC BY-NC-ND), you cannot modify it at all—you can only use it as-is.</p>
+</div>
+
+<h3 class="subsection-title">ShareAlike Requirement</h3>
+<div class="important-note">
+<p>If the original work has an SA license, your remix must use the same or a compatible license. This ensures that adaptations remain as open as the original.</p>
+<ul style="margin-top: 1rem;">
+<li><strong>CC BY-SA → CC BY-SA:</strong> Must use CC BY-SA for your remix</li>
+<li><strong>CC BY-NC-SA → CC BY-NC-SA:</strong> Must use CC BY-NC-SA for your remix</li>
+<li><strong>Cannot mix incompatible SA licenses</strong> — See compatibility chart below</li>
+</ul>
+</div>
+
+<h3 class="subsection-title">Attribution Requirements</h3>
+<ul>
+<li><strong>Credit the original creator(s)</strong> with their name or username</li>
+<li><strong>Indicate what changes you made</strong> — Be specific about modifications</li>
+<li><strong>Link to the original work</strong> and its license</li>
+<li><strong>Make clear your version is a modification</strong> — Don't imply endorsement by original creator</li>
+<li><strong>Provide a link to your new license</strong> if different from original</li>
+</ul>
+
+<h2 class="section-title">Example: Porto Bridges Collection</h2>
+
+<p>Below is a collection of two CC-licensed photographs celebrating Porto's iconic bridges. Each image remains in its original form, unmodified, making this a <strong>collection</strong> rather than a remix.</p>
+
+<div class="collection-grid">
+  <div class="collection-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Ponte_de_D._Lu%C3%ADs_-.jpg" alt="Ponte D Luis in black and white">
+    <h3>Black & White</h3>
+    <p>Ponte de D. Luís — the iconic two-level iron bridge in Porto, Portugal, captured in dramatic black and white.</p>
+    <div class="attribution">
+      <a href="https://commons.wikimedia.org/wiki/File:Ponte_de_D._Lu%C3%ADs_-.jpg" target="_blank">Ponte de D. Luís -.jpg</a> by <a href="https://commons.wikimedia.org/wiki/User:Afsalgado" target="_blank">Afsalgado</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons
+    </div>
+  </div>
+
+  <div class="collection-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Ponte_de_D._Luis_I_%C3%A0_noite_03.jpg" alt="Ponte D Luis at night">
+    <h3>Night View</h3>
+    <p>Ponte de D. Luís — the same bridge illuminated at night, showcasing Porto's beautiful evening atmosphere.</p>
+    <div class="attribution">
+      <a href="https://commons.wikimedia.org/wiki/File:Ponte_de_D._Luis_I_%C3%A0_noite_03.jpg" target="_blank">Ponte de D. Luis I à noite 03</a> by <a href="https://commons.wikimedia.org/wiki/User:GualdimG" target="_blank">GualdimG</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons
+    </div>
+  </div>
+</div>
+
+<div class="license-info">
+<p><strong>Collection License:</strong> The collection "Porto Bridges" © 2024 by André Barbosa is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a></p>
+<div class="license-badge">CC BY-SA 4.0</div>
+<p style="margin-top: 1rem; font-size: 0.9rem;"><em>This license applies to the collection itself (the selection and arrangement of these works), not to the individual photographs, which maintain their own original licenses as noted above.</em></p>
+</div>
+
+<h2 class="section-title">Proper Attribution for the Collection</h2>
+
+<h3 class="subsection-title">Individual Work Attributions</h3><div class="content-box">
+<p><strong>Image 1:</strong> "Ponte de D. Luís -" by Afsalgado is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/</p>
+<p style="margin-top: 1rem;"><strong>Source:</strong> <a href="https://commons.wikimedia.org/wiki/File:Ponte_de_D._Lu%C3%ADs_-.jpg" target="_blank">Wikimedia Commons</a></p>
+</div><div class="content-box">
+<p><strong>Image 2:</strong> "Ponte de D. Luis I à noite 03" by GualdimG is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/</p>
+<p style="margin-top: 1rem;"><strong>Source:</strong> <a href="https://commons.wikimedia.org/wiki/File:Ponte_de_D._Luis_I_%C3%A0_noite_03.jpg" target="_blank">Wikimedia Commons</a></p>
+</div><h3 class="subsection-title">Collection License</h3><div class="content-box">
+<p>The collection "Porto Bridges" (the selection and arrangement of works) © 2024 by André Barbosa is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). This license applies to the collection itself, not to the individual works contained within, which maintain their own original licenses as noted above.</p>
+<p style="margin-top: 1rem;">To view a copy of this license, visit: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+</div><h2 class="section-title">Quick Reference: Collections vs. Remixes</h2><table class="comparison-table">
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Collection</th>
+      <th>Remix/Adaptation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Definition</td>
+      <td>Gathering of separate, distinct works</td>
+      <td>Modified or transformed work</td>
+    </tr>
+    <tr>
+      <td>Original Works</td>
+      <td>Remain unchanged and complete</td>
+      <td>Are modified, transformed, or incorporated</td>
+    </tr>
+    <tr>
+      <td>ND Restriction</td>
+      <td>Can include ND works</td>
+      <td>Cannot use ND works</td>
+    </tr>
+    <tr>
+      <td>Your License</td>
+      <td>Choose any license for the arrangement</td>
+      <td>Must respect SA if present in original</td>
+    </tr>
+    <tr>
+      <td>Attribution</td>
+      <td>Credit each work per its license</td>
+      <td>Credit original and indicate changes</td>
+    </tr>
+    <tr>
+      <td>Separability</td>
+      <td>Works easily separated</td>
+      <td>Elements integrated into new work</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td>Photo gallery, playlist, anthology</td>
+      <td>Translated text, edited image, mashup</td>
+    </tr>
+  </tbody>
+</table><h2 class="section-title">CC License Compatibility Chart</h2><p>The following chart shows which Creative Commons licenses can be combined when creating remixes and adaptations. This is crucial for understanding ShareAlike requirements.</p><div class="chart-section">
+  <a href="https://commons.wikimedia.org/wiki/File:Vectorized_CC_License_Compatibility_Chart.svg" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Vectorized_CC_License_Compatibility_Chart.svg/512px-Vectorized_CC_License_Compatibility_Chart.svg.png" alt="CC License Compatibility Chart">
+  </a>
+  <div class="attribution">
+    <a href="https://commons.wikimedia.org/wiki/File:Vectorized_CC_License_Compatibility_Chart.svg" target="_blank">Vectorized CC License Compatibility Chart</a> by <a href="https://commons.wikimedia.org/wiki/User:The_Sanest_Mad_Hatter" target="_blank">The Sanest Mad Hatter</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a>, via Wikimedia Commons
+  </div>
+</div><div class="content-box">
+<h4>How to Read This Chart</h4>
+<ul>
+<li>Rows represent the original work's license</li>
+<li>Columns represent possible licenses for your adaptation</li>
+<li>Green indicates the combination is allowed</li>
+<li>Red indicates the combination is not permitted</li>
+<li>Pay special attention to ShareAlike requirements—they limit your license choices</li>
+</ul>
+</div><div class="footer-license">
+<h3>License for This Blog Post</h3>
+
+<p><strong>"Understanding Creative Commons Licenses: Collections vs. Remixes"</strong> © 2024 by André Barbosa is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a>.</p>
+
+<div class="license-badge">CC BY-SA 4.0</div><p style="margin-top: 1.5rem;"><strong>You are free to:</strong></p>
+<ul>
+<li>Share — copy and redistribute the material in any medium or format</li>
+<li>Adapt — remix, transform, and build upon the material for any purpose, even commercially</li>
+</ul>
+
+<p style="margin-top: 1rem;"><strong>Under the following terms:</strong></p>
+<ul>
+<li>Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made</li>
+<li>ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original</li>
+</ul>
+
+<p style="margin-top: 1.5rem; font-size: 0.95rem;">To view a copy of this license, visit: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">https://creativecommons.org/licenses/by-sa/4.0/</a></p><p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6c757d;"><strong>Sources:</strong> This post was created as part of the Creative Commons Certificate for Educators course. Images used in the "Porto Bridges" collection are from Wikimedia Commons and maintain their original CC BY-SA 4.0 licenses as attributed above.</p></div>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2024 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a):Alchimista">pt.wikipedia</a>, <a href="https://gitlab.wikimedia.org/alchimista">gitlab.wikimedia</a>,<a href="http://github.com/alchimista">github</a>.
+      </div>
+    </div>
+  </body>
+</html>

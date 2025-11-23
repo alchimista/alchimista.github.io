@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title>Understanding Creative Commons Licenses and Public Domain Tools | Bits & Bots</title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="Understanding Creative Commons Licenses and Public Domain Tools | Bits & Bots">
+    <meta property="og:title" content="Understanding Creative Commons Licenses and Public Domain Tools | Bits & Bots">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+
+  
+  <h1 class="title">Understanding Creative Commons Licenses and Public Domain Tools</h1>
+  
+  
+  
+  
+  <p class="date">André Barbosa - Sunday, November 23, 2025
+  
+
+  </p>
+
+  <div class="body"><style>
+.cc-guide {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.7;
+  color: #2c3e50;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro-section {
+  background: #f8f9fa;
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 3rem 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.subsection-title {
+  font-size: 1.4rem;
+  color: #495057;
+  margin: 2rem 0 1rem 0;
+}
+
+.definition {
+  background: #ffffff;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.layer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.layer-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.layer-card h3 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.element-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.element-card {
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
+
+.element-card h3 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.license-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.license-card {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.license-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.license-badge {
+  height: 31px;
+  width: auto;
+}
+
+.license-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.pd-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.pd-card h3 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.pd-badge-img {
+  height: 31px;
+  width: auto;
+}
+
+.pd-badge {
+  display: inline-block;
+  background: #e7f3ff;
+  color: #0066cc;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.content-box {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+.content-box h4 {
+  margin: 0 0 1rem 0;
+  color: #495057;
+}
+
+.content-box ul {
+  margin: 0.5rem 0 0 1.5rem;
+}
+
+.content-box li {
+  margin-bottom: 0.7rem;
+}
+
+.important-note {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.important-note strong {
+  color: #856404;
+}
+
+.institutional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.institutional-card {
+  background: #f8f9fa;
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
+
+.institutional-card h3 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.institutional-card ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.institutional-card li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-license {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 3rem 0 2rem 0;
+  border-top: 3px solid #667eea;
+}
+
+.footer-license h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+}
+
+.footer-license a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.footer-license a:hover {
+  text-decoration: underline;
+}
+
+.footer-license ul {
+  margin: 1rem 0 0 1.5rem;
+}
+
+.footer-license li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .layer-grid, .element-grid, .license-grid, .pd-grid, .institutional-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-section,
+  .content-box,
+  .footer-license {
+    padding: 1.5rem;
+  }
+}
+</style><div class="cc-guide">
+
+<div class="intro-section">
+<p>Working with open educational resources and digital collections means navigating the sometimes confusing world of Creative Commons licenses and public domain designations. After three years of working with partners on publications, I've learned that understanding how these licenses work—and whom they restrict—is fundamental to effective collaboration and resource sharing.</p>
+</div><h2 class="section-title">The Three Layers: How CC Licenses Actually Work</h2><p>One of Creative Commons' most elegant innovations is the three-layer design that makes licenses simultaneously legally enforceable, human-readable, and machine-discoverable.</p><div class="layer-grid">
+  <div class="layer-card">
+    <h3>1. Legal Code</h3>
+    <p>The legally precise text written in formal legal language that holds up in court. It defines the exact terms of use with all the necessary legal terminology and provisions. While most people never read this layer, it's the foundation that makes CC licenses legally valid worldwide.</p>
+  </div><div class="layer-card">
+    <h3>2. Commons Deed</h3>
+    <p>The human-readable summary that explains what users can and cannot do with the work in plain language. Think of it as the "user manual" for the license. When you see those familiar license badges on websites, clicking them takes you to this layer.</p>
+  </div><div class="layer-card">
+    <h3>3. Machine-Readable Code</h3>
+    <p>Hidden metadata embedded in the work that allows search engines, repositories, and other technologies to automatically recognize and understand the license terms. This makes CC-licensed works discoverable through specialized tools.</p>
+  </div>
+</div><div class="important-note">
+<p><strong>Why This Matters:</strong> This three-layer approach ensures that CC licenses work for lawyers, everyday users, and technology platforms simultaneously—making open content both legally sound and practically usable.</p>
+</div><h2 class="section-title">The Four License Elements</h2><p>Creative Commons licenses are constructed from four basic elements that can be combined in different ways. Every CC license includes Attribution (BY), and the other three elements are optional additions.</p><div class="element-grid">
+  <div class="element-card">
+    <h3>Attribution (BY)</h3>
+    <p>Users must give appropriate credit to the creator, provide a link to the license, and indicate if changes were made. This element appears in all six CC licenses—it's the foundation of the system.</p>
+  </div><div class="element-card">
+    <h3>NonCommercial (NC)</h3>
+    <p>This restricts use to non-commercial purposes. Users can freely use the work for education, research, and personal projects, but cannot use it for commercial gain. Important: the original creator can still sell their own work.</p>
+  </div><div class="element-card">
+    <h3>ShareAlike (SA)</h3>
+    <p>If users create derivative works, they must distribute them under the same license as the original. This creates a "copyleft" effect, ensuring that adaptations remain open. Wikipedia uses this approach.</p>
+  </div><div class="element-card">
+    <h3>NoDerivatives (ND)</h3>
+    <p>Users can copy and redistribute the work but cannot create adaptations or modifications. The work must be shared in its original form. Note: ND and SA are mutually exclusive.</p>
+  </div>
+</div><h2 class="section-title">The Six Creative Commons Licenses</h2><p>Combining these elements creates six standard licenses, arranged here from most to least permissive.</p><div class="license-grid">
+  <div class="license-card">
+    <div class="license-title">
+      <span>CC BY</span>
+      <img src="https://licensebuttons.net/l/by/3.0/88x31.png" alt="CC BY" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution</div>
+    <p><strong>Most permissive.</strong> Others can distribute, remix, adapt, and build upon your work, even commercially, as long as they credit you. This is the recommended license for maximum dissemination and the standard for open access scholarly articles.</p>
+  </div><div class="license-card">
+    <div class="license-title">
+      <span>CC BY-SA</span>
+      <img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution-ShareAlike</div>
+    <p>Others can remix and build upon your work even commercially, but must credit you and license new creations under identical terms. Wikipedia uses this license.</p>
+  </div><div class="license-card">
+    <div class="license-title">
+      <span>CC BY-NC</span>
+      <img src="https://licensebuttons.net/l/by-nc/3.0/88x31.png" alt="CC BY-NC" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution-NonCommercial</div>
+    <p>Others can remix and adapt your work non-commercially. Derivative works don't need to be licensed on the same terms, but all uses must be non-commercial and give credit.</p>
+  </div><div class="license-card">
+    <div class="license-title">
+      <span>CC BY-NC-SA</span>
+      <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC BY-NC-SA" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution-NonCommercial-ShareAlike</div>
+    <p>Combines non-commercial restrictions with the ShareAlike requirement. Others can build upon your work non-commercially, but must credit you and license new creations identically.</p>
+  </div><div class="license-card">
+    <div class="license-title">
+      <span>CC BY-ND</span>
+      <img src="https://licensebuttons.net/l/by-nd/3.0/88x31.png" alt="CC BY-ND" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution-NoDerivatives</div>
+    <p>Others can redistribute your work commercially or non-commercially with credit, but cannot modify it. Useful when you want wide distribution but want to maintain the work's integrity.</p>
+  </div><div class="license-card">
+    <div class="license-title">
+      <span>CC BY-NC-ND</span>
+      <img src="https://licensebuttons.net/l/by-nc-nd/3.0/88x31.png" alt="CC BY-NC-ND" class="license-badge">
+    </div>
+    <div class="license-subtitle">Attribution-NonCommercial-NoDerivatives</div>
+    <p><strong>Most restrictive.</strong> Others can download and share your work with credit, but cannot change it or use it commercially. This significantly limits educational reuse.</p>
+  </div>
+</div><h2 class="section-title">The Two Public Domain Tools</h2><p>These are NOT licenses—they are tools for dedicating works to or marking works already in the public domain.</p><div class="pd-grid">
+  <div class="pd-card">
+    <h3>
+      <span>CC0 (CC Zero)</span>
+      <img src="https://licensebuttons.net/p/zero/1.0/88x31.png" alt="CC0" class="pd-badge-img">
+    </h3>
+    <div class="pd-badge">Public Domain Dedication</div>
+    <p>A tool for creators to waive all their copyright and related rights in their work, dedicating it to the public domain. To the extent legally possible, the creator surrenders all copyright worldwide.</p>
+    <p style="margin-top: 1rem;"><strong>When to use:</strong> When you want to place your own work into the public domain with no conditions whatsoever—not even attribution is required, though it's always appreciated.</p>
+    <p style="margin-top: 1rem;"><strong>Perfect for:</strong> Research data, government documents, factual databases</p>
+  </div><div class="pd-card">
+    <h3>
+      <span>PDM (Public Domain Mark)</span>
+      <img src="https://licensebuttons.net/p/mark/1.0/88x31.png" alt="Public Domain Mark" class="pd-badge-img">
+    </h3>
+    <div class="pd-badge">Public Domain Marker</div>
+    <p>A tool for marking works that are already in the public domain because copyright has expired, been forfeited, or is inapplicable. This is a label, not a legal instrument.</p>
+    <p style="margin-top: 1rem;"><strong>When to use:</strong> When you want to identify and label a work that is already in the public domain, making it easier for others to find and use.</p>
+    <p style="margin-top: 1rem;"><strong>Perfect for:</strong> Digitized historical materials, expired copyrights</p>
+  </div>
+</div><div class="content-box">
+<h4>How PD Tools Differ from CC Licenses</h4>
+<ul>
+<li><strong>Not licenses:</strong> They don't grant permissions—they indicate no permission is needed</li>
+<li><strong>No restrictions:</strong> Public domain works can be used for any purpose without attribution or other requirements</li>
+<li><strong>Cannot be revoked:</strong> Once in the public domain, always in the public domain</li>
+<li><strong>Different purposes:</strong> CC0 is for dedication; PDM is for identification</li>
+<li><strong>No license elements:</strong> BY, NC, SA, and ND don't apply to public domain</li>
+</ul>
+</div><h2 class="section-title">How Exceptions and Limitations to Copyright Affect CC Licensed Works</h2><div class="definition">
+<p><strong>What are Exceptions and Limitations?</strong> These are legal provisions that allow certain uses of copyrighted works without permission. In the US, this includes "fair use" for purposes like criticism, commentary, news reporting, teaching, scholarship, and research. Other countries have similar provisions called "fair dealing" or specific educational exceptions.</p>
+</div><div class="important-note">
+<p><strong>Key Principle: Exceptions ALWAYS Apply</strong></p>
+<p>Creative Commons licenses do not reduce, limit, or restrict any rights under exceptions and limitations to copyright. These rights exist independently and are preserved regardless of the license applied.</p>
+</div><h3 class="subsection-title">What This Means in Practice</h3><ul>
+<li><strong>Users retain all exception rights:</strong> Even if a work is licensed CC BY-NC-ND (most restrictive), users can still make fair use of it under applicable copyright law.</li>
+<li><strong>Educational use:</strong> Teachers can use CC-licensed works under educational exceptions, and the CC license often makes it even easier by granting explicit permission.</li>
+<li><strong>Criticism and commentary:</strong> You can quote from and comment on CC-licensed works under fair use/fair dealing, even if the license is NC or ND.</li>
+<li><strong>CC licenses are "baseline" permissions:</strong> They provide a minimum set of permissions that work alongside (not instead of) existing copyright exceptions.</li>
+<li><strong>International variations:</strong> Different countries have different exceptions and limitations, and CC licenses respect all of them.</li>
+</ul><div class="important-note">
+<p><strong>Practical Implication:</strong> If a use would be permitted under fair use or another copyright exception, a CC license cannot prohibit it. The license provides additional permissions beyond what copyright law already allows—it's always additive, never restrictive of existing rights.</p>
+</div><h2 class="section-title">Application to Institutional Work</h2><div class="institutional-grid">
+  <div class="institutional-card">
+    <h3>For Educational Institutions</h3>
+    <ul>
+      <li><strong>OER Development:</strong> Use CC BY or CC BY-SA for maximum reusability and adaptation</li>
+      <li><strong>Research Publications:</strong> CC BY is standard for open access scholarly articles</li>
+      <li><strong>Student Work:</strong> Help students understand licensing options</li>
+      <li><strong>Institutional Repositories:</strong> Mark public domain materials with PDM; encourage CC0 for data</li>
+    </ul>
+  </div><div class="institutional-card">
+    <h3>For Libraries and Archives</h3>
+    <ul>
+      <li><strong>Digitized Collections:</strong> Use PDM for public domain materials—don't add unnecessary restrictions</li>
+      <li><strong>Composite Works:</strong> Provide element-by-element rights information (novel vs. introduction)</li>
+      <li><strong>Finding Aids:</strong> Consider CC BY for metadata to enable reuse</li>
+      <li><strong>Rights Statements:</strong> Maintain accurate, granular copyright information</li>
+    </ul>
+  </div>
+</div><div class="content-box">
+<h4>Common Institutional Scenarios</h4>
+<ul>
+<li><strong>Adapting OER:</strong> Check if ShareAlike requires you to use the same license</li>
+<li><strong>Commercial Partnerships:</strong> Ensure NC-licensed works aren't used commercially by partners</li>
+<li><strong>Creating Databases:</strong> Consider CC0 for factual data</li>
+<li><strong>Historical Materials:</strong> Research copyright status before applying licenses—don't restrict public domain works</li>
+</ul>
+</div><h2 class="section-title">What I Wish I'd Known Three Years Ago</h2><div class="content-box">
+<p>The distinction between what licensors can do versus what licensees can do has been my biggest learning curve. The licensor (original copyright holder) always retains all rights and can separately license or sell their work however they choose. The restrictions in a CC license only apply to licensees—the people using the work.</p>
+
+<p style="margin-top: 1rem;">This means when you license your work CC BY-NC, you're not preventing yourself from commercial use—you're only restricting others. And once you've applied a CC license, while you can stop distributing under that license, anyone who already obtained the work under those terms can continue using it forever. CC licenses are irrevocable.</p>
+
+<p style="margin-top: 1rem;">Understanding these fundamentals has made collaboration with partners clearer and helped prevent the confusion I've sometimes created around how licenses restrict different parties.</p>
+</div><h2 class="section-title">Moving Forward with Confidence</h2><p>Creative Commons licenses and public domain tools provide a flexible, legally sound framework for sharing and reusing creative and educational works. By understanding the three layers, four elements, six licenses, and two public domain tools—along with how they interact with existing copyright exceptions—institutions can make informed decisions that balance openness with appropriate protection.</p><p>The goal isn't always maximum openness; it's choosing the right tool for your specific situation and clearly communicating rights information to users. Whether you're creating OER, digitizing collections, or helping students license their work, understanding these fundamentals empowers better decision-making in service of the open culture mission.</p><div class="footer-license">
+<h3>About This Post</h3>
+
+<p><strong>License:</strong> This blog post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></p>
+
+<p><strong>Attribution:</strong> Created for the Creative Commons Certificate for Educators course</p>
+
+<p><strong>Sources:</strong> Content adapted from <a href="https://creativecommons.org/course/cc-cert-edu/" target="_blank">Creative Commons Certificate for Educators</a> by Creative Commons, licensed under CC BY 4.0</p>
+
+<h4 style="margin-top: 1.5rem;">Learn More</h4>
+<ul>
+<li><a href="https://chooser-beta.creativecommons.org/" target="_blank">Creative Commons License Chooser</a></li>
+<li><a href="https://creativecommons.org/mission/downloads/" target="_blank">Download CC Icons and Resources</a></li>
+<li><a href="https://creativecommons.org/course/cc-cert-edu/" target="_blank">Creative Commons Certificate Course</a></li>
+</ul>
+
+<p style="margin-top: 1.5rem; font-size: 0.9rem;"><em>Have questions about CC licenses or how to apply them in your institutional context? The Creative Commons community is welcoming and helpful—don't hesitate to reach out through their forums and support channels.</em></p>
+</div><p>&lt;/div&gt;</p>
+</div>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2024 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a):Alchimista">pt.wikipedia</a>, <a href="https://gitlab.wikimedia.org/alchimista">gitlab.wikimedia</a>,<a href="http://github.com/alchimista">github</a>.
+      </div>
+    </div>
+  </body>
+</html>
