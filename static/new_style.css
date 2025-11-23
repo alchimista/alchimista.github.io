@@ -129,18 +129,5 @@ img {
     float: none;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-}
-
-.cc-collections-guide img {
-  width: 100% !important;
-  max-width: none !important;
-  height: auto !important;
-  display: block;
-  margin: 2rem auto; /* opcional, para espaçamento */
-}
-
-.compatibility-chart img {
-  width: 100% !important;
-  max-width: none !important;
+    width: 50%;
 }
