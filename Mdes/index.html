@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title></title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="">
+    <meta property="og:title" content="">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h2></h2>
+  <html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metainformação Descritiva</title>
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --accent: #b21f1f;
+            --bg: #fdfdfd;
+            --correct: #d4edda;
+            --incorrect: #f8d7da;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: #ece9e6; color: #333; line-height: 1.6; padding: 10px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        header { text-align: center; border-bottom: 3px solid var(--primary); margin-bottom: 30px; padding-bottom: 10px; }
+        h1 { color: var(--primary); margin: 0; font-size: 1.8em; }
+        h2 { background: var(--primary); color: white; padding: 10px; border-radius: 5px; font-size: 1.2em; margin-top: 40px; }
+
+        .question-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin-bottom: 15px; transition: 0.2s; }
+        .question-text { font-weight: bold; display: block; margin-bottom: 10px; }
+
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        .option-item { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px; border-radius: 4px; }
+        .option-item:hover { background: #f0f0f0; }
+
+        .match-row { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; background: #fafafa; padding: 8px; border-radius: 5px; }
+        .match-left { flex: 1; font-size: 0.95em; }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 220px; }
+
+        .controls { position: sticky; bottom: 20px; background: white; padding: 15px; border-top: 2px solid #eee; display: flex; gap: 10px; justify-content: center; z-index: 100; }
+        button { padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-check { background: #27ae60; color: white; }
+        .btn-new { background: #3498db; color: white; }
+
+        .correct-ans { background-color: var(--correct) !important; border: 1px solid #c3e6cb; }
+        .wrong-ans { background-color: var(--incorrect) !important; border: 1px solid #f5c6cb; }
+        #score-board { font-size: 1.5em; text-align: center; font-weight: bold; margin: 20px 0; color: var(--primary); display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Exame: Metainformação Descritiva</h1>
+        <p>Geração Aleatória • Avaliação de Conhecimentos</p>
+    </header>
+
+    <div id="score-board"></div>
+
+    <form id="exam-form">
+        <div id="g1"><h2>Grupo I - Escolha Múltipla (10 questões)</h2><div id="container-mc"></div></div>
+        <div id="g2"><h2>Grupo II - Verdadeiro ou Falso (10 questões)</h2><div id="container-vf"></div></div>
+        <div id="g3"><h2>Grupo III - Correspondência (4 conjuntos)</h2><div id="container-match"></div></div>
+    </form>
+
+    <div class="controls">
+        <button class="btn-new" onclick="window.location.reload()">Gerar Novo Exame</button>
+        <button class="btn-check" onclick="grade()">Corrigir e Pontuar</button>
+    </div>
+</div>
+
+<script>
+    // --- BANCO DE DADOS ---
+    const mcPool = [
+        { q: "Metainformação descritiva é principalmente:", options: ["O conteúdo completo de um recurso digital", "Dados estruturados que descrevem outros recursos", "Software para gerir bibliotecas", "Um tipo de licença Creative Commons"], a: "Dados estruturados que descrevem outros recursos" },
+        { q: "Qual é a diferença principal entre dados e metainformação?", options: ["Dados são sempre numéricos, metainformação é textual", "Metainformação descreve os dados", "Dados são sempre manuais, metainformação é automática", "Não há diferença significativa"], a: "Metainformação descreve os dados" },
+        { q: "A função seleção da metainformação permite:", options: ["Criar novos conteúdos", "Escolher entre recursos semelhantes", "Comprimir ficheiros", "Traduzir automaticamente textos"], a: "Escolher entre recursos semelhantes" },
+        { q: "Catalogação e metainformação diferem principalmente porque:", options: ["Catalogação é sempre manual", "Metainformação aplica-se apenas a recursos digitais", "Metainformação é conceito mais amplo que qualquer recurso", "Catalogação usa apenas XML"], a: "Metainformação é conceito mais amplo que qualquer recurso" },
+        { q: "Qual destas NÃO é uma função da metainformação descritiva?", options: ["Descoberta/recuperação", "Compressão de ficheiros", "Contextualização", "Preservação"], a: "Compressão de ficheiros" },
+        { q: "OPAC significa:", options: ["Online Public Access Catalogue", "Open Protocol for Archive Cataloguing", "Optical Processing and Archiving Code", "Organized Public Archive Collection"], a: "Online Public Access Catalogue" },
+        { q: "A evolução da catalogação seguiu esta ordem cronológica aproximada:", options: ["OPAC → fichas → MARC → Dublin Core", "Fichas → MARC → OPAC → Dublin Core", "Dublin Core → MARC → fichas → OPAC", "MARC → Dublin Core → OPAC → fichas"], a: "Fichas → MARC → OPAC → Dublin Core" },
+        { q: "Qual destes exemplos melhor ilustra metainformação no dia a dia?", options: ["O texto de um livro", "Tags e género numa música do Spotify", "O nome do ficheiro", "O conteúdo de um email"], a: "Tags e género numa música do Spotify" },
+        { q: "Princípios FAIR referem-se principalmente a:", options: ["Formatos de ficheiros", "Dados científicos Findable, Accessible, Interoperable, Reusable", "Ferramentas de IA", "Normas de catalogação"], a: "Dados científicos Findable, Accessible, Interoperable, Reusable" },
+        { q: "SEO (Search Engine Optimization) depende principalmente de:", options: ["Qualidade dos metadados descritivos", "Velocidade do servidor", "Número de páginas do website", "Cor do fundo do site"], a: "Qualidade dos metadados descritivos" },
+        { q: "Metadados descritivos incluem principalmente:", options: ["Formato do ficheiro", "Título, autor, assunto", "Licença de uso", "Data de criação"], a: "Título, autor, assunto" },
+        { q: "Um exemplo de metadado estrutural seria:", options: ["ISBN do livro", "Capítulo 2: páginas 45-78", "PDF, 2.5 MB", "Autor: Maria Silva"], a: "Capítulo 2: páginas 45-78" },
+        { q: "Metadados administrativos registam:", options: ["Resumo do conteúdo", "Direitos de autor e restrições de acesso", "Palavras-chave temáticas", "Nome da série editorial"], a: "Direitos de autor e restrições de acesso" },
+        { q: "Qual destes é metadado descritivo?", options: ["Resolução 300 DPI", "Literatura portuguesa contemporânea", "Data de migração: 2025-01-15", "Formato TIFF"], a: "Literatura portuguesa contemporânea" },
+        { q: "PREMIS é padrão para:", options: ["Metadados de preservação digital", "Descrição bibliográfica", "Áudio/vídeo", "Imagens fotográficas"], a: "Metadados de preservação digital" },
+        { q: "Dublin Core tem quantos elementos principais?", options: ["8", "15", "22", "50"], a: "15" },
+        { q: "Qual modelo é usado para dados de investigação?", options: ["MODS", "DDI", "METS", "PBCore"], a: "DDI" },
+        { q: "EAD é usado principalmente em:", options: ["Bibliotecas", "Arquivos", "Museus", "Streaming de vídeo"], a: "Arquivos" },
+        { q: "ISBD organiza a descrição bibliográfica em quantas áreas?", options: ["5", "8", "12", "9"], a: "9" }
+    ];
+
+    const vfPool = [
+        { q: "Metainformação é sinónimo de 'dados sobre dados'.", a: "V" },
+        { q: "A catalogação tradicional aplicava-se apenas a livros impressos.", a: "F" },
+        { q: "OPAC surgiu antes do formato MARC.", a: "F" },
+        { q: "Metadados existem apenas em recursos digitais.", a: "F" },
+        { q: "A função 'preservação' garante acesso a longo prazo.", a: "V" },
+        { q: "SEO não depende de metadados descritivos.", a: "F" },
+        { q: "Metainformação pode descrever recursos que já não existem fisicamente.", a: "V" },
+        { q: "Catalogação e metainformação são conceitos idênticos.", a: "F" },
+        { q: "Dublin Core tem 15 elementos principais.", a: "V" },
+        { q: "DDI documenta dados de investigação.", a: "V" },
+        { q: "UNIMARC é usado em arquivos.", a: "F" },
+        { q: "EAD usa XML para descrições arquivísticas.", a: "V" },
+        { q: "ISBD tem 8 áreas de descrição.", a: "V" },
+        { q: "OAI-PMH colhe metadados de repositórios.", a: "V" },
+        { q: "RDF usa triplos sujeito-predicado-objeto.", a: "V" },
+        { q: "IA OCR reconhece texto em imagens.", a: "V" },
+        { q: "URI identifica unicamente recursos na Web.", a: "V" },
+        { q: "Schema.org é vocabulário para Web Semântica.", a: "V" },
+        { q: "EXIF é tipo de metadado descritivo.", a: "F" },
+        { q: "DOI é metadado administrativo.", a: "F" }
+        // ... (pode adicionar mais aqui até 50)
+    ];
+
+    const matchPool = [
+        { t: "Tipos de Metadados", p: [{l: "Título, autor, assunto", r: "Descritivo"}, {l: "Cap. 1: p. 1-25", r: "Estrutural"}, {l: "Licença CC BY", r: "Administrativo"}] },
+        { t: "Modelos de Metadados", p: [{l: "EAD", r: "Arquivos hierárquicos"}, {l: "PBCore", r: "Áudio/vídeo"}, {l: "DataCite", r: "Dados científicos"}] },
+        { t: "Normas", p: [{l: "ISBD", r: "Bibliotecas (pontuação)"}, {l: "ISAD(G)", r: "Arquivos (proveniência)"}, {l: "PREMIS", r: "Preservação digital"}] },
+        { t: "Técnicas IA", p: [{l: "OCR", r: "Reconhece texto"}, {l: "Speech-to-text", r: "Transcreve áudio"}, {l: "IA Generativa", r: "Gera resumos"}] },
+        { t: "Web Semântica", p: [{l: "RDF", r: "Triplos S-P-O"}, {l: "SKOS", r: "Tesauros/conceitos"}, {l: "BIBFRAME", r: "Linked Data Bibliotecas"}] },
+        { t: "Vocabulários", p: [{l: "Folksonomia", r: "Tags utilizadores"}, {l: "Ontologia", r: "Classes/relações formais"}, {l: "Tesauro", r: "Hierarquia Broader/Narrower"}] }
+    ];
+
+    // --- LÓGICA ---
+    function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
+
+    function init() {
+        // Render MC
+        const mcSelected = shuffle([...mcPool]).slice(0, 10);
+        const mcCont = document.getElementById('container-mc');
+        mcSelected.forEach((item, i) => {
+            const opts = shuffle([...item.options]);
+            mcCont.innerHTML += `
+                <div class="question-card mc-q" data-ans="${item.a}">
+                    <span class="question-text">${i+1}. ${item.q}</span>
+                    <div class="options-grid">
+                        ${opts.map(o => `<label class="option-item"><input type="radio" name="mc${i}" value="${o}"> ${o}</label>`).join('')}
+                    </div>
+                </div>`;
+        });
+
+        // Render VF
+        const vfSelected = shuffle([...vfPool]).slice(0, 10);
+        const vfCont = document.getElementById('container-vf');
+        vfSelected.forEach((item, i) => {
+            vfCont.innerHTML += `
+                <div class="question-card vf-q" data-ans="${item.a}">
+                    <span class="question-text">${i+1}. ${item.q}</span>
+                    <label class="option-item"><input type="radio" name="vf${i}" value="V"> Verdadeiro</label>
+                    <label class="option-item"><input type="radio" name="vf${i}" value="F"> Falso</label>
+                </div>`;
+        });
+
+        // Render Match
+        const matchSelected = shuffle([...matchPool]).slice(0, 4);
+        const matchCont = document.getElementById('container-match');
+        matchSelected.forEach((group, gi) => {
+            const rightOpts = shuffle(group.p.map(p => p.r));
+            let html = `<div class="question-card"><strong>${group.t}</strong><br><br>`;
+            group.p.forEach((pair, pi) => {
+                html += `
+                    <div class="match-row" data-ans="${pair.r}">
+                        <div class="match-left">${pair.l}</div>
+                        <select><option value="">Associe...</option>${rightOpts.map(o => `<option value="${o}">${o}</option>`).join('')}</select>
+                    </div>`;
+            });
+            matchCont.innerHTML += html + `</div>`;
+        });
+    }
+
+    function grade() {
+        let score = 0;
+        let total = 0;
+
+        // Grade MC & VF
+        document.querySelectorAll('.mc-q, .vf-q').forEach(q => {
+            total++;
+            const selected = q.querySelector('input:checked');
+            if(selected && selected.value === q.dataset.ans) {
+                score++;
+                q.classList.add('correct-ans');
+            } else {
+                q.classList.add('wrong-ans');
+            }
+        });
+
+        // Grade Match
+        document.querySelectorAll('.match-row').forEach(row => {
+            total++;
+            const sel = row.querySelector('select');
+            if(sel.value === row.dataset.ans) {
+                score++;
+                sel.classList.add('correct-ans');
+            } else {
+                sel.classList.add('wrong-ans');
+            }
+        });
+
+        const sb = document.getElementById('score-board');
+        sb.style.display = 'block';
+        sb.innerHTML = `Nota Final: ${score} / ${total} (${Math.round(score/total*100)}%)`;
+        window.scrollTo(0,0);
+    }
+
+    init();
+</script>
+</body>
+</html>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2025 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+          <a href="https://pt.wikipedia.org/wiki/Usu%C3%A1rio(a):Alchimista">pt.wikipedia</a>, <a href="https://gitlab.wikimedia.org/alchimista">gitlab.wikimedia</a>,<a href="http://github.com/alchimista">github</a>.
+      </div>
+    </div>
+  </body>
+</html>
