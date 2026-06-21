@@ -1,0 +1,483 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title></title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="">
+    <meta property="og:title" content="">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h2></h2>
+  <p>&lt;!DOCTYPE html&gt;</p>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exame Final de SIO (20 Valores) - Simulação de Grau de Mestre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .tab-transition { transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans pb-24">
+
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-xl py-4 px-6 border-b border-slate-700">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 bg-red-500 font-bold text-[10px] rounded tracking-widest uppercase">Prova Oficial</span>
+                    <h1 class="text-lg font-bold tracking-tight">SIO — Exame de Simulação Final (Modelo III)</h1>
+                </div>
+                <p class="text-xs text-slate-400 mt-0.5">Perspetiva Sócio-Técnica | Duração: 90 Minutos | Sem Consulta</p>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700 shadow-inner">
+                <span class="text-xs text-slate-400 font-medium uppercase tracking-wider">Cronómetro:</span>
+                <span id="timer" class="text-2xl font-mono font-bold text-emerald-400 tracking-tight">90:00</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 mt-8">
+
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="space-y-1">
+                <h2 class="font-bold text-slate-900 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    Estrutura de Avaliação (20 Valores)
+                </h2>
+                <p class="text-xs text-slate-500">O sistema aplica rigorosamente o regulamento de correção da pauta.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 bg-blue-50 border border-blue-200 text-blue-800 rounded-lg text-xs font-semibold">Parte I: 15 Escolhas Múltiplas (15 Val)</span>
+                <span class="px-3 py-1.5 bg-purple-50 border border-purple-200 text-purple-800 rounded-lg text-xs font-semibold">Parte II: 2 Desenvolvimentos (5 Val)</span>
+            </div>
+        </div>
+
+        <form id="examForm">
+
+            <div class="mb-12">
+                <div class="border-b-2 border-slate-900 pb-2 mb-6 flex justify-between items-end">
+                    <h2 class="text-xl font-black tracking-tight uppercase text-slate-900">Parte I: Escolha Múltipla</h2>
+                    <span class="text-xs font-bold text-slate-500">Cotação: +1.0 / -0.2 / 0.0</span>
+                </div>
+
+                <div id="mcq-container" class="space-y-6"></div>
+            </div>
+
+            <div class="mb-12">
+                <div class="border-b-2 border-slate-900 pb-2 mb-6 flex justify-between items-end">
+                    <h2 class="text-xl font-black tracking-tight uppercase text-slate-900">Parte II: Desenvolvimento</h2>
+                    <span class="text-xs font-bold text-slate-500">Cotação: 2 x 2.5 Valores</span>
+                </div>
+
+                <div class="space-y-8">
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-900 font-black text-xs rounded-md">Pergunta D1</span>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded border border-purple-200">Cotação: 2.5 Valores</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">Gestão do Conhecimento & Sistemas Organizacionais</h3>
+                        <p class="text-sm text-slate-600 mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100 leading-relaxed">
+                            Uma rede de hospitais privados decidiu implementar um "Sistema de Gestão do Conhecimento" (KMS) centralizado para reter o saber clínico dos seus cirurgiões seniores antes de estes se reformarem. O departamento de TI criou um portal baseado em Wikis e ordenou que todos os cirurgiões redigissem guias detalhados com o passo-a-passo das suas cirurgias complexas. Passados seis meses, o portal está vazio. Confrontado pela administração, o cirurgião-chefe respondeu: <i>"A arte de uma cirurgia complexa está na ponta dos nossos dedos e no instinto de reação quando uma artéria sangra de forma imprevista; não é possível colocar isso numa caixa de texto"</i>.
+                        </p>
+                        <div class="text-xs font-bold text-slate-700 space-y-1 mb-4 pl-2 border-l-2 border-purple-500">
+                            <p>1. Distinga os conceitos de Conhecimento Explícito e Conhecimento Tácito à luz da bibliografia. (0,8 val)</p>
+                            <p>2. Identifique e critique a estratégia de Gestão do Conhecimento (Codificação vs. Personalização) aplicada. (0,8 val)</p>
+                            <p>3. Proponha uma solução sociotécnica viável para o hospital reter este património. (0,9 val)</p>
+                        </div>
+                        <textarea id="essayD1" rows="7" placeholder="Redija aqui a sua resposta estruturada (utilize parágrafos ou alíneas para separar os 3 pontos exigidos)..." class="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm font-sans leading-relaxed"></textarea>
+
+                        <div id="gabaritoD1" class="hidden mt-6 bg-purple-50/50 border-2 border-purple-300 rounded-xl p-6 text-xs space-y-3">
+                            <div class="font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 border-b border-purple-200 pb-2">
+                                <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Grelha Oficial de Correção (D1)
+                            </div>
+                            <p><b>1. Distinção (0,8 val):</b> Conhecimento <i>Explícito</i> é codificável, formal e transmissível em linguagem sistemática (dados, manuais). Conhecimento <i>Tácito</i> é pessoal, enraizado na experiência, na intuição e na destreza física (know-how), sendo impossível de formalizar em texto.</p>
+                            <p><b>2. Crítica à Estratégia (0,8 val):</b> O hospital aplicou a <i>Estratégia de Codificação</i> (baseada em bases de dados/wikis). Falhou porque a destreza de um cirurgião é tácita; tentar forçar a sua conversão em texto gera perda de contexto e frustração.</p>
+                            <p><b>3. Proposta Viável (0,9 val):</b> O hospital deve pivotar para uma <i>Estratégia de Personalização</i>. Medidas: (A) Mentoria Mestre-Aprendiz (cirurgiões juniores a operar lado-a-lado com seniores); e (B) Diretório de peritos ("Páginas Amarelas da Cirurgia") e sessões de revisão de casos (Comunidades de Prática).</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-900 font-black text-xs rounded-md">Pergunta D2</span>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded border border-purple-200">Cotação: 2.5 Valores</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base mb-2">Integração de Sistemas & Inteligência Artificial</h3>
+                        <p class="text-sm text-slate-600 mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100 leading-relaxed">
+                            Uma retalhista de e-commerce opera com uma cadeia de abastecimento altamente complexa. O CEO convoca uma reunião de emergência porque o balanço mensal revela perdas de milhares de euros em reembolsos indevidos: os clientes reclamam que não receberam as encomendas e a Linha de Apoio (CRM) devolve-lhes o dinheiro, porque a app de Front-office mostra a encomenda como "Entregue". Contudo, os registos físicos do armazém (TPS) revelam que as caixas nunca saíram de lá devido a etiquetas com códigos de barras rasgados. Para resolver o problema definitivamente, o Diretor de TI propõe: <i>"Vamos comprar um agente de Inteligência Artificial Generativa (LLM) para atender as chamadas dos clientes e decidir os reembolsos de forma 100% automatizada"</i>.
+                        </p>
+                        <div class="text-xs font-bold text-slate-700 space-y-1 mb-4 pl-2 border-l-2 border-purple-500">
+                            <p>1. Explique a falha sistémica de base à luz de Alistair Mutch sobre a integridade dos dados na base (TPS). (1,2 val)</p>
+                            <p>2. Argumente criticamente se a compra do LLM resolve o problema, mobilizando o conceito de Human-Centered AI e Alucinação. (1,3 val)</p>
+                        </div>
+                        <textarea id="essayD2" rows="7" placeholder="Redija aqui o seu parecer crítico de resposta..." class="w-full p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm font-sans leading-relaxed"></textarea>
+
+                        <div id="gabaritoD2" class="hidden mt-6 bg-purple-50/50 border-2 border-purple-300 rounded-xl p-6 text-xs space-y-3">
+                            <div class="font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 border-b border-purple-200 pb-2">
+                                <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                Grelha Oficial de Correção (D2)
+                            </div>
+                            <p><b>1. Raiz Sistémica (1,2 val):</b> Rutura de <i>Integração entre Sistemas Organizacionais</i> (o TPS de armazém não comunica a rutura ao CRM). Segundo Mutch, a qualidade da decisão de topo depende do rigor da recolha na base. Se o TPS captura "lixo" (etiqueta rasgada não registada), o CRM opera sobre uma ilusão.</p>
+                            <p><b>2. Refutação do LLM (1,3 val):</b> A proposta é um erro grave. Primeiro, aplicar IA sobre dados errados resulta em <i>"gerar reembolsos errados mais depressa"</i>. Segundo, no <i>Human-Centered AI</i>, a máquina deve <i>Aumentar</i> (Augmentation) o operador e não o <i>Substituir</i> (Replacement). Terceiro, os LLMs sofrem de <i>Alucinação</i>: otimizam a fluência e não a verdade factual, correndo o risco de inventar devoluções. A solução é reparar o pipeline ETL entre o armazém e o CRM.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sticky bottom-6 z-40 bg-slate-900/95 text-white backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-xs text-slate-300 flex items-center gap-3">
+                    <span>Progresso MCQ: <b id="mcqCount" class="text-emerald-400 font-mono text-sm">0</b> / 15</span>
+                    <span class="h-3 w-px bg-slate-700"></span>
+                    <span>Desenvolvimentos: <b id="essayStatus" class="text-amber-400 font-mono text-sm">Por Escrever</b></span>
+                </div>
+                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold rounded-xl shadow-lg shadow-indigo-500/25 transition">
+                    Trancar e Corrigir Exame
+                </button>
+            </div>
+
+        </form>
+
+        <div id="resultsModal" class="hidden mt-12 bg-white rounded-3xl p-8 shadow-2xl border-4 border-slate-900 scroll-mt-24">
+
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Relatório Gerado</span>
+                <h2 class="text-3xl font-black text-slate-900 mt-2">Pauta de Avaliação Final</h2>
+                <p class="text-slate-500 text-sm mt-1">A tua nota da Parte I está fechada. Insere a tua autoavaliação da Parte II para obteres a nota final de 0 a 20.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-4xl mx-auto font-sans">
+
+                <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 text-center flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Parte I (Fechada)</span>
+                        <h4 class="text-2xl font-black text-slate-800 mt-1">Escolha Múltipla</h4>
+                    </div>
+                    <div class="my-4">
+                        <span id="resMCQScore" class="text-5xl font-mono font-black text-blue-600">0.0</span>
+                        <span class="text-slate-400 font-bold"> / 15.0</span>
+                    </div>
+                    <div class="text-xs text-slate-500 flex justify-center gap-3">
+                        <span>Certas: <b id="resC" class="text-emerald-600">0</b></span>
+                        <span>Erradas: <b id="resE" class="text-rose-600">0</b></span>
+                        <span>Brancas: <b id="resB" class="text-slate-600">0</b></span>
+                    </div>
+                </div>
+
+                <div class="bg-purple-50/40 border-2 border-purple-200 rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="text-center">
+                        <span class="text-xs font-bold text-purple-500 uppercase tracking-wider">Parte II (Autoavaliação)</span>
+                        <h4 class="text-xl font-black text-purple-950 mt-1">Notas de Desenvolvimento</h4>
+                        <p class="text-[11px] text-purple-700 mt-0.5">Compara o teu texto com as grelhas roxas destrancadas acima e sê honesto:</p>
+                    </div>
+
+                    <div class="space-y-3 my-4">
+                        <div class="flex items-center justify-between bg-white px-4 py-2.5 rounded-xl border border-purple-100 shadow-sm">
+                            <label class="text-xs font-bold text-slate-700">Nota D1 <span class="font-normal text-slate-400">(0 a 2.5)</span>:</label>
+                            <input type="number" id="gradeD1" step="0.1" min="0" max="2.5" value="1.5" oninput="computeFinal20()" class="w-20 text-center font-mono font-bold text-purple-700 bg-purple-50 border border-purple-300 rounded-lg py-1 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                        </div>
+                        <div class="flex items-center justify-between bg-white px-4 py-2.5 rounded-xl border border-purple-100 shadow-sm">
+                            <label class="text-xs font-bold text-slate-700">Nota D2 <span class="font-normal text-slate-400">(0 a 2.5)</span>:</label>
+                            <input type="number" id="gradeD2" step="0.1" min="0" max="2.5" value="1.5" oninput="computeFinal20()" class="w-20 text-center font-mono font-bold text-purple-700 bg-purple-50 border border-purple-300 rounded-lg py-1 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                        </div>
+                    </div>
+
+                    <div class="text-center text-xs text-purple-800 font-medium">
+                        Subtotal Abertas: <b id="subtotalDev" class="font-mono text-purple-950 font-bold">3.0</b> / 5.0
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 text-white rounded-2xl p-6 text-center flex flex-col justify-between shadow-xl">
+                    <div>
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Pauta Oficial</span>
+                        <h4 class="text-2xl font-black mt-1">Classificação UC</h4>
+                    </div>
+                    <div class="my-4">
+                        <span id="finalScore20" class="text-6xl font-mono font-black text-emerald-400 tracking-tight">0.0</span>
+                        <span class="text-slate-400 font-bold text-xl block mt-1">/ 20 Valores</span>
+                    </div>
+                    <div id="veredictoText" class="text-xs font-bold tracking-wide uppercase px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300">
+                        A calcular...
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-200 pt-8 mt-8">
+                <h3 class="font-black text-slate-900 uppercase tracking-tight text-sm mb-4">Gabarito de Verificação Rápida (Parte I):</h3>
+                <div id="mcqQuickReview" class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2.5 text-xs font-mono"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        const mcqData = [
+            { id: 1, q: 'Alistair Mutch argumenta que o conhecimento numa organização não é um mero ficheiro acumulado num disco rígido. Segundo a sua perspetiva sociotécnica, o conhecimento real de uma empresa é:', opts: [{k:'a',t:'Totalmente codificável através de algoritmos de mineração de processos em Run-time.'},{k:'b',t:'Um subproduto linear e automático da acumulação de Big Data em armazéns OLAP.'},{k:'c',t:'Situado culturalmente, mediado tecnologicamente e distribuído socialmente pelas comunidades de prática.'},{k:'d',t:'Exclusivo dos gestores de nível estratégico que operam com dados formatados.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Mutch (Cap. 3). Conhecimento é uma realidade viva, social e impossível de reter puramente no hardware.' },
+            { id: 2, q: 'Um analista de risco de um banco utiliza um software que cruza automaticamente o salário, o rácio de endividamento e o histórico de incidentes de um cliente, emitindo a indicação "Aprovado" ou "Rejeitado" com base em fórmulas matemáticas estritas. Este problema de decisão e o respetivo nível de gestão classificam-se como:', opts: [{k:'a',t:'Problema Não-Estruturado de nível Estratégico.'},{k:'b',t:'Problema Semi-Estruturado de nível Tático.'},{k:'c',t:'Problema Estocástico de fronteira Customer-facing.'},{k:'d',t:'Problema Estruturado de nível Operacional.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'd', exp: 'Simon. Regras matemáticas estritas, repetição diária e curto prazo = Nível Operacional / Estruturado.' },
+            { id: 3, q: 'O conselho de administração de uma retalhista de luxo solicita um estudo com o seguinte foco: "Análise da evolução da quota de mercado das marcas concorrentes na Europa Central nos últimos 3 anos". Na taxonomia das dimensões da informação, o Âmbito (Scope) deste relatório é:', opts: [{k:'a',t:'Centrado no ambiente de negócios externo (Business environment).'},{k:'b',t:'Centrado numa função de negócio interna.'},{k:'c',t:'Centrado num projeto multifuncional.'},{k:'d',t:'Centrado num subconjunto da gama de produtos transacionais.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'Tabela 2.6. Olhar para a concorrência além-fronteiras = Ambiente Externo de Negócios.' },
+            { id: 4, q: 'Uma montadora de automóveis deteta que atrasos minúsculos na encomenda de rebites geram flutuações de produção gigantescas e pânico nos fornecedores de matérias-primas a montante (upstream). Para mitigar este fenómeno (Efeito Chicote / Bullwhip Effect), a arquitetura de SI interorganizacional crítica é:', opts: [{k:'a',t:'Um Customer Relationship Management (CRM) analítico.'},{k:'b',t:'Um Enterprise Content Management (ECM) de back-office.'},{k:'c',t:'Um sistema de automação de força de vendas B2C.'},{k:'d',t:'Um Supply Chain Management (SCM) integrado em tempo real com os portais de fornecedores.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'd', exp: 'SCM interorganizacional ataca a falta de visibilidade e o pânico informacional na cadeia de abastecimento.' },
+            { id: 5, q: 'Uma universidade pública decide adquirir um software ERP comercial desenhado originalmente para corporações industriais americanas. O departamento financeiro debate-se com o facto de o software exigir a criação obrigatória de "centros de lucro e manufatura", conceitos inexistentes na contabilidade pública. À luz de Curry et al., isto ilustra:', opts: [{k:'a',t:'Uma falha de tempestividade transacional do pipeline ETL.'},{k:'b',t:'Uma falha de Fit (alinhamento) estrutural entre a lógica embutida no pacote comercial e a realidade institucional da organização.'},{k:'c',t:'A ausência de um motor de Inteligência Artificial generativa no Front-office.'},{k:'d',t:'Um excesso de personalização mútua no subsistema social.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Curry. O clássico desajuste (Fit) entre a rigidez do software e a natureza orgânica da instituição.' },
+            { id: 6, q: 'No desenho de um Workflow para a aprovação de ordens de compra superiores a 10.000€, a regra estipula que a nota de encomenda só é enviada ao fornecedor após a validação e assinatura digital do Diretor Financeiro. Na terminologia clássica lecionada, o Diretor Financeiro atua nesta atividade como o:', opts: [{k:'a',t:'Controlador / Aprovador (Controller / Approver).'},{k:'b',t:'Requerente (Requestor).'},{k:'c',t:'Supervisor (Supervisor).'},{k:'d',t:'Programador em Build-time.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'Slide 4. Quem detém o poder de trancar ou libertar a transação seguinte é o Controller / Approver.' },
+            { id: 7, q: 'Uma multinacional de logística implementa uma plataforma de BPM estritamente para orquestrar e auditar a troca eletrónica de documentação aduaneira entre a sua sede em Lisboa e dezenas de transportadoras subcontratadas em toda a Europa. Esta iniciativa enquadra-se na categoria de BPM:', opts: [{k:'a',t:'Departamental (Departmental BPM).'},{k:'b',t:'Focada no Objeto (Object-oriented BPM).'},{k:'c',t:'Entre Empresas / Interorganizacional (Between Companies BPM).'},{k:'d',t:'De Gestão Documental Pessoal.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Slide 4. Atravessar a fronteira da empresa para coordenar processos com subcontratados = Between Companies BPM.' },
+            { id: 8, q: 'Num escritório de engenharia acústica, as fórmulas matemáticas de propagação de som, os regulamentos municipais de ruído e os manuais de software de simulação estão guardados num servidor partilhado e organizados por subpastas. Na tipologia dos ativos de conhecimento, este acervo constitui:', opts: [{k:'a',t:'Conhecimento Experiencial (Experiential knowledge).'},{k:'b',t:'Conhecimento Concetual e Explícito (Conceptual / Explicit knowledge).'},{k:'c',t:'Conhecimento Tácito Rotineiro.'},{k:'d',t:'Conhecimento Probabilístico de Run-time.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Manuais, fórmulas escritas e regulamentos organizados são Conhecimento Explícito e Concetual.' },
+            { id: 9, q: 'Uma entidade bancária necessita de uma plataforma para gerir os contratos de crédito habitação assinados pelos clientes. O sistema tem de garantir que nenhum documento é apagado durante 30 anos, registar cada acesso de auditoria e impedir qualquer alteração ao PDF original. A ferramenta adequada é:', opts: [{k:'a',t:'Um Content Management System (CMS) de publicação web.'},{k:'b',t:'Um cubo OLAP multidimensional.'},{k:'c',t:'Um sistema transacional puro de Front-office.'},{k:'d',t:'Um Document Management System (DMS) focado em conformidade (compliance) e fluxos formais.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'd', exp: 'Slide 5. Imutabilidade, auditoria jurídica e longos anos de arquivo = DMS (Document Management System).' },
+            { id: 10, q: 'O departamento de Data Science de uma retalhista passou 8 meses num projeto de previsão de rutura de stock. O engenheiro principal afirma: "Treinar o algoritmo de Machine Learning demorou apenas 10 dias; os outros 7 meses e meio foram passados a tentar unificar bases de dados antigas e a corrigir formatos incorretos". Isto prova que:', opts: [{k:'a',t:'O estrangulamento analítico reside na preparação, integração e governação dos dados fabris (CRISP-DM), e não na complexidade matemática do modelo.'},{k:'b',t:'A Inteligência Artificial atual é incapaz de operar com dados formatados transacionais.'},{k:'c',t:'O CEO deve substituir a equipa por um modelo de linguagem LLM genérico.'},{k:'d',t:'A empresa está a utilizar uma estratégia de personalização tácita.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'CRISP-DM. A modelação matemática é rápida (~10%); limpar e governar os dados transacionais é o gargalo real (~90%).' },
+            { id: 11, q: 'Um software de analítica de uma frota de camiões monitoriza a pressão dos pneus. Ao detetar uma queda súbita num veículo, emite a indicação: "O pneu dianteiro esquerdo do camião 12 rebentou devido à perfuração por um objeto metálico na autoestrada". Na escada de maturidade analítica, isto corresponde a:', opts: [{k:'a',t:'Analítica Descritiva (Descriptive analytics).'},{k:'b',t:'Analítica Preditiva (Predictive analytics).'},{k:'c',t:'Analítica Diagnóstica (Diagnostic analytics), pois identifica a causa raiz (porquê) do acontecimento.'},{k:'d',t:'Analítica Prescritiva (Prescriptive analytics).'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Slide 7. Explicar a causa ou a origem de uma anomalia passada ("rebentou devido a...") = Analítica de Diagnóstico.' },
+            { id: 12, q: 'De acordo com o Ponto 4 do programa e o Slide 8, a Arquitetura de Sistemas de Informação de uma organização define-se formalmente como:', opts: [{k:'a',t:'Uma abstração propositada (purposeful abstraction), composta por representações estruturadas e seletivas (Negócio, Aplicações, Dados, Infraestrutura) concebidas para dominar a complexidade.'},{k:'b',t:'O conjunto exato de cabos de fibra ótica e servidores físicos instalados no datacenter.'},{k:'c',t:'O rácio de utilidade percecionada calculado pelo modelo TAM de Davis.'},{k:'d',t:'Uma base de dados relacional viva alojada no módulo SaaS.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'Slide 8. Arquitetura não é a máquina física; é a abstração deliberada para conseguir projetar ecossistemas complexos.' },
+            { id: 13, q: 'Ao avaliar o colapso de uma nova Intranet corporativa, o gestor de projeto repara que, embora os manuais lá publicados estejam impecáveis e corretos, as páginas demoram 18 segundos a carregar e a barra de pesquisa devolve "erro 404". Os colaboradores abandonaram o portal. No modelo de DeLone & McLean, a falha é uma péssima:', opts: [{k:'a',t:'Qualidade da Informação (Information Quality).'},{k:'b',t:'Qualidade do Sistema (System Quality).'},{k:'c',t:'Qualidade do Serviço de Suporte (Service Quality).'},{k:'d',t:'Matriz de Reengenharia BPR.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'DeLone & McLean. Bugs, ecrãs partidos e lentidão extrema afetam a Qualidade do Sistema (System Quality).' },
+            { id: 14, q: 'O "Modelo de Alinhamento Estratégico" (Henderson & Venkatraman) lecionado na UC defende que a obtenção de vantagem competitiva sustentável através das TI exige a articulação contínua de quatro domínios fundamentais. Estes domínios são:', opts: [{k:'a',t:'Hardware, Software, Redes e Utilizadores finais.'},{k:'b',t:'Dados brutos, Informação estruturada, Conhecimento tácito e Sabedoria.'},{k:'c',t:'Operações diárias, Tática departamental, Estratégia global e Consultoria externa.'},{k:'d',t:'Estratégia de Negócio, Estratégia de TI, Infraestrutura/Processos Organizacionais e Infraestrutura/Processos de TI.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'd', exp: 'Slide 8. Os 4 quadrantes clássicos que ligam a visão de negócio à execução tecnológica.' },
+            { id: 15, q: 'Uma startup precisa de lançar uma base de dados na Cloud. Contrata a Google Cloud nos seguintes termos: a Google gere os datacenters, os servidores, as redes e o SO; a startup recebe apenas o ambiente SQL configurado e as ferramentas de compilação prontas a usar. Que modelo Cloud contrataram?', opts: [{k:'a',t:'IaaS (Infrastructure as a Service).'},{k:'b',t:'SaaS (Software as a Service).'},{k:'c',t:'PaaS (Platform as a Service).'},{k:'d',t:'BPaaS (Business Process as a Service).'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Slide 8. Sem gerir o hardware, mas com liberdade para injetar código e gerir as tabelas SQL = PaaS.' }
+        ];
+
+        const container = document.getElementById('mcq-container');
+        const form = document.getElementById('examForm');
+        let timerInterval;
+
+        // 1. Renderizar MCQ
+        function renderMCQs() {
+            mcqData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-6 rounded-2xl shadow-sm border border-slate-200 transition';
+                card.id = `mcq-card-${item.id}`;
+
+                let optionsContent = '';
+                item.opts.forEach(opt => {
+                    optionsContent += `
+                        <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-100 hover:bg-slate-50 cursor-pointer text-slate-700 transition">
+                            <input type="radio" name="mcq_${item.id}" value="${opt.k}" onchange="trackProgress()" class="mt-1 accent-blue-600">
+                            <span class="text-sm font-medium"><b>${opt.k})</b> ${opt.text || opt.t}</span>
+                        </label>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-2.5 py-0.5 bg-blue-100 text-blue-900 font-black text-xs rounded">Q${index + 1}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 mb-4 leading-snug">${item.q}</h3>
+                    <div class="space-y-2.5">${optionsContent}</div>
+                    <div id="exp-${item.id}" class="hidden mt-4 bg-blue-50/50 border-l-4 border-blue-600 p-4 rounded-r-xl text-xs text-blue-950">
+                        <b class="uppercase tracking-wider block mb-1">💡 Justificação Técnica:</b>
+                        ${item.exp}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 2. Acompanhar inputs
+        function trackProgress() {
+            const fd = new FormData(form);
+            let mcqCount = 0;
+            for(let [k, v] of fd.entries()) {
+                if(k.startsWith('mcq_') && v && v !== 'e') mcqCount++;
+            }
+            document.getElementById('mcqCount').innerText = mcqCount;
+
+            const d1Len = document.getElementById('essayD1').value.trim().length;
+            const d2Len = document.getElementById('essayD2').value.trim().length;
+            const statusEl = document.getElementById('essayStatus');
+
+            if(d1Len > 20 && d2Len > 20) {
+                statusEl.innerText = 'Rascunhados (OK)';
+                statusEl.className = 'text-emerald-400 font-mono text-sm font-bold';
+            } else if (d1Len > 20 || d2Len > 20) {
+                statusEl.innerText = 'Incompleto (1/2)';
+                statusEl.className = 'text-amber-400 font-mono text-sm';
+            }
+        }
+
+        document.getElementById('essayD1').addEventListener('input', trackProgress);
+        document.getElementById('essayD2').addEventListener('input', trackProgress);
+
+        // 3. Cronómetro 90 Mins
+        function startTimer() {
+            let time = 90 * 60;
+            const el = document.getElementById('timer');
+            timerInterval = setInterval(() => {
+                time--;
+                let m = Math.floor(time / 60);
+                let s = time % 60;
+                el.innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+                if(time <= 600) el.className = 'text-2xl font-mono font-bold text-rose-500 animate-pulse tracking-tight';
+                if(time <= 0) { clearInterval(timerInterval); form.dispatchEvent(new Event('submit')); }
+            }, 1000);
+        }
+
+        let mcqRawScore = 0;
+
+        // 4. Submissão e Cálculo
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+
+            const fd = new FormData(form);
+            let certas = 0, erradas = 0, brancas = 0;
+
+            const quickBox = document.getElementById('mcqQuickReview');
+            quickBox.innerHTML = '';
+
+            mcqData.forEach((item, idx) => {
+                const choice = fd.get(`mcq_${item.id}`);
+                const card = document.getElementById(`mcq-card-${item.id}`);
+                const expEl = document.getElementById(`exp-${item.id}`);
+
+                card.querySelectorAll('input').forEach(i => i.disabled = true);
+                expEl.classList.remove('hidden');
+
+                let badge = '';
+
+                if(!choice || choice === 'e') {
+                    brancas++;
+                    card.classList.add('border-slate-300', 'bg-slate-50/50');
+                    badge = `<span class="p-2 bg-slate-100 text-slate-600 rounded text-center block">Q${idx+1}: Branco</span>`;
+                } else if(choice === item.ans) {
+                    certas++;
+                    card.classList.add('border-emerald-500', 'bg-emerald-50/20');
+                    card.querySelector(`input[value="${item.ans}"]`).parentElement.classList.add('bg-emerald-100', 'border-emerald-400', 'font-bold', 'text-emerald-950');
+                    badge = `<span class="p-2 bg-emerald-100 text-emerald-800 rounded text-center font-bold block">Q${idx+1}: Cert (+1)</span>`;
+                } else {
+                    erradas++;
+                    card.classList.add('border-rose-500', 'bg-rose-50/20');
+                    card.querySelector(`input[value="${choice}"]`).parentElement.classList.add('bg-rose-100', 'border-rose-400', 'line-through', 'text-rose-900');
+                    card.querySelector(`input[value="${item.ans}"]`).parentElement.classList.add('bg-emerald-100', 'border-emerald-400', 'font-bold', 'text-emerald-950');
+                    badge = `<span class="p-2 bg-rose-100 text-rose-800 rounded text-center font-bold block">Q${idx+1}: Err (-0.2)</span>`;
+                }
+
+                quickBox.innerHTML += badge;
+            });
+
+            // Fechar Textareas e Mostrar Gabaritos
+            document.getElementById('essayD1').disabled = true;
+            document.getElementById('essayD2').disabled = true;
+            document.getElementById('gabaritoD1').classList.remove('hidden');
+            document.getElementById('gabaritoD2').classList.remove('hidden');
+
+            mcqRawScore = Math.max(0, (certas * 1.0) - (erradas * 0.2));
+
+            document.getElementById('resMCQScore').innerText = mcqRawScore.toFixed(1);
+            document.getElementById('resC').innerText = certas;
+            document.getElementById('resE').innerText = erradas;
+            document.getElementById('resB').innerText = brancas;
+
+            document.getElementById('resultsModal').classList.remove('hidden');
+            computeFinal20();
+            document.getElementById('resultsModal').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 5. Auto-Calculadora de 20 Valores
+        function computeFinal20() {
+            const d1 = parseFloat(document.getElementById('gradeD1').value) || 0;
+            const d2 = parseFloat(document.getElementById('gradeD2').value) || 0;
+
+            const subtotalDev = (d1 + d2);
+            document.getElementById('subtotalDev').innerText = subtotalDev.toFixed(1);
+
+            const notaGlobal = Math.min(20, Math.max(0, mcqRawScore + subtotalDev));
+            const scoreEl = document.getElementById('finalScore20');
+            const vBox = document.getElementById('veredictoText');
+
+            scoreEl.innerText = notaGlobal.toFixed(1);
+
+            if(notaGlobal >= 16) {
+                vBox.innerText = '🏆 MÉRITO ABSOLUTO! Estás com nível de Excelência (16+)';
+                vBox.className = 'text-xs font-black tracking-wide uppercase px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/30';
+            } else if(notaGlobal >= 12) {
+                vBox.innerText = 'APROVAÇÃO SEGURA! Bom domínio conceptual';
+                vBox.className = 'text-xs font-bold tracking-wide uppercase px-4 py-2 rounded-xl bg-blue-500 text-white shadow-lg shadow-blue-500/30';
+            } else {
+                vBox.innerText = '⚠️ EM RISCO. Revisa a matemática das rasteiras negativas';
+                vBox.className = 'text-xs font-bold tracking-wide uppercase px-4 py-2 rounded-xl bg-rose-500 text-white shadow-lg shadow-rose-500/30';
+            }
+        }
+
+        renderMCQs();
+        startTimer();
+    </script>
+</body>
+</html>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2025 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+<div class="social-links social-right">
+	    <a href="https://www.linkedin.com/in/andr%C3%A9-barbosa-b20a439/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2" />
+            <rect x="2" y="9" width="4" height="14" />
+            <circle cx="4" cy="4" r="2" />
+        </svg>
+    </a>
+
+    <a href="https://ciberlandia.pt/@Barbosa" target="_blank" rel="me noopener" aria-label="Mastodon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2c5 0 9 1 9 6v5c0 5-4 9-9 9s-9-4-9-9v-5c0-5 4-6 9-6z" />
+            <path d="M8 10v3m8-3v3m-4-3v3" stroke-linecap="round" />
+        </svg>
+    </a>
+
+    <a href="https://github.com/alchimista" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 0 0-3 19c.5.1.7-.2.7-.5v-2c-3 .7-3.6-1.5-3.6-1.5-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8a2 2 0 0 1 .6-1.3c-2.4-.3-5-1.2-5-5.4a4.2 4.2 0 0 1 1.1-3c-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 1a10.3 10.3 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .6 1.5.2 2.7.1 3a4.2 4.2 0 0 1 1.1 3c0 4.2-2.6 5.1-5 5.4a2.2 2.2 0 0 1 .6 1.6v2.4c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/>
+        </svg>
+    </a>
+
+    <a href="https://gitlab.wikimedia.org/alchimista" target="_blank" rel="noopener" aria-label="GitLab">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22l10-7-4-12-3 8h-6l-3-8-4 12z" />
+        </svg>
+    </a>
+
+<a href="https://pt.wikipedia.org/wiki/TEU_ARTIGO" target="_blank" rel="noopener" aria-label="Wikipedia">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+        <!-- Globo -->
+        <circle cx="12" cy="10" r="7" />
+
+        <!-- Fragmentação superior -->
+        <path d="M8 4l1.5 1.5" />
+        <path d="M12 3.5v2" />
+        <path d="M15 4l1.5 1.5" />
+
+        <!-- W a sair do globo -->
+        <path d="M7 10l2 7l4-5l8 5l2-8" />
+    </svg>
+</a>
+
+</a>
+
+</div>      </div>
+    </div>
+  </body>
+</html>

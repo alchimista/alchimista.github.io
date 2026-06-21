@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title></title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="">
+    <meta property="og:title" content="">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h2></h2>
+  <p>&lt;!DOCTYPE html&gt;</p>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIO — Exame de Consagração (Nível 20/20) - Matriz Sócio-Técnica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .exam-mode { user-select: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans pb-32 selection:bg-emerald-500 selection:text-slate-950">
+
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl py-4 px-6 transition-all" id="topBar">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black text-[10px] rounded tracking-widest uppercase shadow-lg shadow-emerald-500/20">Nível 20/20</span>
+                <div>
+                    <h1 class="text-base sm:text-lg font-black tracking-tight text-white">SIO — O Teste de Resistência Sócio-Técnica (Exame V)</h1>
+                    <p class="text-[11px] text-slate-400 font-medium mt-0.5">Teoria Crítica de Curry, Mutch, Simon e Henderson & Venkatraman</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button type="button" onclick="toggleExamMode()" id="lockBtn" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs font-bold rounded-xl border border-slate-700 flex items-center gap-2 transition">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping" id="lockDot"></span>
+                    <span>Modo Foco: OFF</span>
+                </button>
+                <div class="flex items-center gap-3 bg-slate-950 px-4 py-1.5 rounded-xl border border-slate-800 shadow-inner">
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Cronómetro:</span>
+                    <span id="timer" class="text-2xl font-mono font-black text-emerald-400 tracking-tight">90:00</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 mt-8" id="mainContent">
+
+        <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/40 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-10 shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <h2 class="text-xl font-black text-white mb-2 flex items-center gap-2.5">
+                <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                O Desafio da Consagração
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed max-w-3xl mb-4">
+                Esta prova foi concebida para quem não quer apenas passar, mas sim dominar a pauta. As questões de escolha múltipla contêm distratores baseados no "senso comum de engenharia". Lê cada palavra com a lente de um sociólogo que percebe de bases de dados.
+            </p>
+            <div class="flex flex-wrap gap-3 text-xs font-mono font-semibold">
+                <span class="px-3 py-1 bg-slate-950 text-emerald-400 rounded-lg border border-slate-800">MCQ: 15 Perguntas (+1.0 / -0.2)</span>
+                <span class="px-3 py-1 bg-slate-950 text-purple-400 rounded-lg border border-slate-800">Desenvolvimento: 2 Ensaios (2.5 cada)</span>
+            </div>
+        </div>
+
+        <form id="examForm">
+
+            <div class="mb-16">
+                <div class="border-b-2 border-slate-800 pb-3 mb-6 flex justify-between items-end">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <h2 class="text-xl font-black tracking-wider uppercase text-white">Parte I: Escolha Múltipla Avançada</h2>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">Cotação: 15.0 Valores</span>
+                </div>
+
+                <div id="mcqContainer" class="space-y-5"></div>
+            </div>
+
+            <div class="mb-14">
+                <div class="border-b-2 border-slate-800 pb-3 mb-6 flex justify-between items-end">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                        <h2 class="text-xl font-black tracking-wider uppercase text-white">Parte II: Ensaios de Argumentação Sócio-Técnica</h2>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">Cotação: 5.0 Valores</span>
+                </div>
+
+                <div class="space-y-10">
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative shadow-lg">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-300 font-black text-xs rounded">Ensaio D1</span>
+                            <span class="text-xs font-mono font-black text-purple-400 bg-purple-950 px-3 py-1 rounded border border-purple-800">2.5 Valores</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-2">Sistemas de Transação, Rigor Paramétrico e a "Inventariação Sombra"</h3>
+                        <p class="text-xs text-slate-300 mb-4 bg-slate-950 p-4 rounded-xl border border-slate-800/80 leading-relaxed font-mono">
+                            Uma grande cadeia de retalho implementou o SAP ERP nas suas 120 lojas. Antigamente, os gerentes de loja podiam abater stock manualmente no sistema para justificar garrafas de azeite partidas durante a descarga ("ajuste de quebra"). O novo ERP bloqueou os abates manuais em Run-time para garantir "100% de integridade nos dados transacionais" para o painel do Administrador Financeiro na sede. Passados 6 meses, as discrepâncias de inventário explodiram: os gerentes escondem as garrafas partidas na cave em vez de as declararem, e passaram a controlar o stock real numa folha paralela de Google Sheets partilhada entre eles.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 space-y-1.5 mb-4 pl-3 border-l-2 border-purple-500">
+                            <p>1. Diagnostique este colapso à luz de Alistair Mutch, explicando a interdependência entre os dados e o contexto humano que os gera. (1,0 val)</p>
+                            <p>2. Contraste os conceitos de "Standardization" (Padronização) e "Discretion" (Discricionariedade) de Curry et al., justificando por que razão a busca técnica por dados perfeitos destruiu a validade real da informação. (1,5 val)</p>
+                        </div>
+                        <textarea id="txtD1" rows="6" placeholder="Redija a sua argumentação técnica aqui..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-200 focus:outline-none focus:border-purple-500 leading-relaxed font-sans custom-scrollbar"></textarea>
+
+                        <div id="rubricD1" class="hidden mt-6 bg-purple-950/40 border border-purple-800/60 rounded-xl p-6 space-y-4">
+                            <div class="text-xs font-black text-purple-300 uppercase tracking-wider border-b border-purple-800/60 pb-2.5 flex justify-between items-center">
+                                <span>Grelha Oficial de Auto-Auditoria (D1)</span>
+                                <span class="font-mono text-purple-400 text-[11px]">Seleciona estritamente o que abordaste:</span>
+                            </div>
+                            <div class="space-y-2.5 text-xs text-slate-300">
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d1 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.5">
+                                    <div>
+                                        <b class="text-white">Crítica da Captura de Dados (0.5):</b> Explica que os dados não "existem" de forma isenta; eles são socialmente produzidos pelos gerentes (Mutch).
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Correto. Identificou a base sociotécnica do construto de dados."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d1 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.5">
+                                    <div>
+                                        <b class="text-white">O Paradoxo do Abate (0.5):</b> Alerta que proibir a correção de erros na base (TPS) apenas força o erro a propagar-se de forma invisível para o topo.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Excelente aplicação do princípio 'Garbage In, Optimized Garbage Out'."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d1 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.7">
+                                    <div>
+                                        <b class="text-white">Standardization vs Discretion (0.7):</b> Cita explicitamente Curry, demonstrando que a padronização extrema desqualificou o instinto de gestão do gerente.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Gancho teórico perfeito. Mobilizou os termos exatos do manual."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d1 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.8">
+                                    <div>
+                                        <b class="text-white">Sistemas Sombra / Shadow IT (0.8):</b> Identifica o Google Sheets como um sintoma clássico de resistência informal para reaver o controlo operacional.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Diagnóstico maduro de comportamento organizacional face à TI."</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="bg-purple-950/80 p-3 rounded-xl border border-purple-800/80 flex justify-between items-center text-xs font-mono font-bold text-purple-300">
+                                <span>Cotação Calculada (Ensaio 1):</span>
+                                <span class="text-base text-white"><span id="scoreD1">0.0</span> / 2.5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative shadow-lg">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-300 font-black text-xs rounded">Ensaio D2</span>
+                            <span class="text-xs font-mono font-black text-purple-400 bg-purple-950 px-3 py-1 rounded border border-purple-800">2.5 Valores</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base mb-2">Alinhamento Estratégico, Atendimento e o Perigo da "Alucinação Factual"</h3>
+                        <p class="text-xs text-slate-300 mb-4 bg-slate-950 p-4 rounded-xl border border-slate-800/80 leading-relaxed font-mono">
+                            Uma operadora de telecomunicações enfrenta uma vaga de cancelamentos de contratos. O Chief Technology Officer (CTO) propõe à administração: "Vamos despedir os nossos 200 especialistas humanos de suporte de 2ª Linha (que resolvem disputas complexas de faturação) e colocar um agente de Inteligência Artificial Generativa (LLM) treinado com os nossos PDFs de preçários a decidir os reembolsos. É um modelo SaaS puro, opera 24/7 e poupa-nos 50.000€ por mês!". Assumindo o cargo de Chief Information Officer (CIO), redija o parecer de travagem.
+                        </p>
+                        <div class="text-xs font-medium text-slate-300 space-y-1.5 mb-4 pl-3 border-l-2 border-purple-500">
+                            <p>1. Desmonte a proposta do CTO utilizando o Modelo de Alinhamento Estratégico de Henderson & Venkatraman. (0,8 val)</p>
+                            <p>2. Contraponha a precisão "Determinística/Factual" à fluência "Gerativa/Probabilística" (Slide 7), explicando o risco de Alucinação Financeira. (0,9 val)</p>
+                            <p>3. Utilize o princípio de Human-Centered AI (Accountability) para propor a arquitetura de SI correta. (0,8 val)</p>
+                        </div>
+                        <textarea id="txtD2" rows="6" placeholder="Redija o seu memorando de resposta à Administração aqui..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-200 focus:outline-none focus:border-purple-500 leading-relaxed font-sans custom-scrollbar"></textarea>
+
+                        <div id="rubricD2" class="hidden mt-6 bg-purple-950/40 border border-purple-800/60 rounded-xl p-6 space-y-4">
+                            <div class="text-xs font-black text-purple-300 uppercase tracking-wider border-b border-purple-800/60 pb-2.5 flex justify-between items-center">
+                                <span>Grelha Oficial de Auto-Auditoria (D2)</span>
+                                <span class="font-mono text-purple-400 text-[11px]">Seleciona estritamente o que abordaste:</span>
+                            </div>
+                            <div class="space-y-2.5 text-xs text-slate-300">
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d2 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.8">
+                                    <div>
+                                        <b class="text-white">Alinhamento Estratégico (0.8):</b> Identifica o erro de "Tecnologia a conduzir o Negócio" (H&V), ignorando os eixos de infraestrutura e processos organizacionais.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Muito bem. Evidenciou a falta de articulação entre os 4 domínios de H&V."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d2 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.5">
+                                    <div>
+                                        <b class="text-white">Taxonomia da Tarefa (0.5):</b> Explica que disputas de faturação exigem exatidão determinística (ser factual), e não produção linguística fluente.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Distinção vital entre prever/calcular vs. gerar texto."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d2 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.4">
+                                    <div>
+                                        <b class="text-white">Mecânica da Alucinação (0.4):</b> Alerta que o LLM inventará créditos indevidos por otimizar a plausibilidade semântica da conversa.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Explicou o 'porquê' da alucinação algorítmica de forma técnica."</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-lg hover:bg-purple-900/20 cursor-pointer border border-transparent hover:border-purple-800/40 transition">
+                                    <input type="checkbox" onchange="evalEssay()" class="chk-d2 w-4 h-4 mt-0.5 accent-purple-500 rounded" value="0.8">
+                                    <div>
+                                        <b class="text-white">Human-Centered AI (0.8):</b> Propõe o modelo de Aumentação (*Augmentation*): o LLM resume a lei, mas a decisão e a responsabilização (*Accountability*) ficam no humano.
+                                        <span class="block text-[11px] text-purple-400/80 font-mono mt-0.5">↳ Comentário do Corretor: "Fecho de ouro. Alinhado com as diretrizes de risco do EU AI Act."</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="bg-purple-950/80 p-3 rounded-xl border border-purple-800/80 flex justify-between items-center text-xs font-mono font-bold text-purple-300">
+                                <span>Cotação Calculada (Ensaio 2):</span>
+                                <span class="text-base text-white"><span id="scoreD2">0.0</span> / 2.5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sticky bottom-6 z-40 bg-slate-900/95 backdrop-blur-md p-5 rounded-2xl border border-slate-800 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-xs text-slate-400 flex items-center gap-3 font-mono">
+                    <span>Progresso MCQ: <b id="mcqCount" class="text-emerald-400 text-sm">0</b> / 15</span>
+                    <span class="w-px h-3 bg-slate-700"></span>
+                    <span>Redação: <b id="essayStatus" class="text-amber-400">Pendente</b></span>
+                </div>
+                <button type="submit" id="submitBtn" class="w-full sm:w-auto px-10 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-xs uppercase tracking-widest rounded-xl shadow-xl shadow-emerald-500/20 transition transform active:scale-95">
+                    Submeter Exame e Gerar Pauta
+                </button>
+            </div>
+
+        </form>
+
+        <div id="resultsBox" class="hidden mt-12 bg-slate-900 border-2 border-emerald-500/60 rounded-3xl p-8 sm:p-10 shadow-2xl scroll-mt-20">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="px-3.5 py-1 bg-emerald-500/10 text-emerald-400 font-mono text-xs font-bold rounded-full border border-emerald-500/20 tracking-wider">PAUTA DE ÉPOCA ESPECIAL</span>
+                <h2 class="text-3xl font-black text-white mt-2">Relatório de Desempenho de Mestre</h2>
+                <p class="text-xs text-slate-400 mt-1">A tua nota da Parte I foi calculada por JS. Pica as rubricas roxas nos ensaios acima para descobrires a tua cotação exata.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-center flex flex-col justify-between">
+                    <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider font-mono">Parte I (Escolha Múltipla)</span>
+                    <div class="text-5xl font-mono font-black text-emerald-400 my-3" id="notaP1">0.0</div>
+                    <div class="text-[11px] text-slate-400 font-mono">Certas: <b id="nC" class="text-emerald-400">0</b> | Erradas: <b id="nE" class="text-rose-400">0</b></div>
+                </div>
+                <div class="bg-purple-950/30 border border-purple-800/50 rounded-2xl p-6 text-center flex flex-col justify-between">
+                    <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider font-mono">Parte II (Grelhas Dinâmicas)</span>
+                    <div class="text-5xl font-mono font-black text-purple-400 my-3" id="notaP2">0.0</div>
+                    <div class="text-[11px] text-purple-300/70 font-mono">Ensaio 1: <span id="pD1">0.0</span> | Ensaio 2: <span id="pD2">0.0</span></div>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-500 to-teal-700 rounded-2xl p-6 text-center shadow-xl flex flex-col justify-center text-slate-950">
+                    <span class="text-[10px] font-black uppercase tracking-widest opacity-80 font-mono">Nota Final UC / 20</span>
+                    <div class="text-6xl font-mono font-black tracking-tight my-1 text-white" id="notaFinal20">0.0</div>
+                    <span id="badgePauta" class="text-[10px] font-black tracking-widest text-slate-950 uppercase mt-1">A compilar...</span>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3 font-mono">Auditoria de Rasteiras (Parte I):</span>
+                <div id="mcqAudit" class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2.5 text-xs font-mono"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const mcqData = [
+            { id: 1, q: 'Quando um sistema de BI gera um dashboard de margens de lucro por produto, Alistair Mutch defende teoreticamente que essa "informação" só adquire verdadeiro valor de gestão se os decisores compreenderem:', opts: [{k:'a',t:'O código SQL exato que executou a operação de JOIN entre as tabelas.'},{k:'b',t:'As regras de negócio, os compromissos informais e os juízos de valor implícitos que os programadores usaram para definir o que conta como "custo direto".'},{k:'c',t:'Que a sabedoria deriva linearmente da velocidade de relógio do servidor.'},{k:'d',t:'Que a informação descritiva é factual e imutável.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Mutch (Cap. 3). A informação é uma construção social. O número no ecrã reflete as escolhas políticas de quem programou a fórmula.' },
+            { id: 2, q: 'Um algoritmo preditivo indica ao gestor de armazém: "A quantidade ótima de compra do produto X é 412 unidades". O gestor ignora a máquina e encomenda 400, justificando: "400 cabem exatamente numa palete fechada e poupa trabalho aos operadores". Na ótica de Herbert Simon, o gestor aplicou:', opts: [{k:'a',t:'Um viés algorítmico destrutivo de nível transacional.'},{k:'b',t:'O critério de Racionalidade Limitada e a procura de uma solução satisfatória (Satisficing) face a restrições físicas.'},{k:'c',t:'Reengenharia de Processos de Negócio (BPR).'},{k:'d',t:'Analítica Prescritiva pura em Build-time.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Simon. O gestor não procura a perfeição matemática (412); ele "satisfaz" as restrições cognitivas e de tempo do armazém real (400).' },
+            { id: 3, q: 'O Diretor Fabril exige um relatório sobre a taxa de quebra entregue todos os dias às 08h00 em ponto (Tempestividade perfeita). Contudo, para cumprir a hora, o analista usa estimativas por amostragem do turno da noite em vez de pesar a quebra real. O critério de qualidade sacrificado em prol da tempestividade foi:', opts: [{k:'a',t:'Acessibilidade (Accessibility).'},{k:'b',t:'Exatidão (Accuracy).'},{k:'c',t:'Frequência de agregação.'},{k:'d',t:'Apresentação Quantitativa.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Curry. O clássico compromisso (trade-off) da gestão: ter a informação a horas (Tempestividade) obriga muitas vezes a sacrificar a sua Exatidão.' },
+            { id: 4, q: 'Uma empresa de calçado compra o ERP SAP. Em vez de mudar as suas rotinas para se adaptar ao software (Vanilla), gasta 1 milhão de euros a alterar 70% do código base do SAP para espelhar a sua forma tradicional de trabalhar. Segundo Curry et al., o maior pesadelo futuro desta empresa será:', opts: [{k:'a',t:'A conversão acidental de transações OLTP em cubos OLAP.'},{k:'b',t:'A impossibilidade técnica e financeira de instalar atualizações (upgrades) do software sem quebrar as centenas de customizações feitas.'},{k:'c',t:'A passagem de modelação BPMN para diagramas EPC.'},{k:'d',t:'A migração forçada de nuvem IaaS para PaaS.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Curry. A "armadilha da customização". Alterar o núcleo do ERP destrói o caminho de atualização, prendendo a empresa a um software legado caro.' },
+            { id: 5, q: 'Num Call Center, o software CRM mede ao segundo o Tempo Médio de Atendimento (TMA) de cada operador. Para manterem o seu TMA baixo e ganharem o bónus, os operadores desligam "acidentalmente" a chamada a clientes com problemas complexos. O rácio de resolução à primeira colapsa. O diagnóstico sociotécnico é:', opts: [{k:'a',t:'A métrica técnica do sistema gerou uma perversão comportamental no subsistema social, minando o objetivo global do negócio.'},{k:'b',t:'Falha de mineração de processos (Process Mining) em Build-time.'},{k:'c',t:'O motor de inferência probabilística falhou a predição de Churn.'},{k:'d',t:'O CRM carece de uma base de dados estruturada acoplada.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'SIO.pdf / Mutch. As pessoas gerem aquilo que é medido. Se o SI foca na velocidade cega, o ser humano sabota a qualidade para sobreviver à métrica.' },
+            { id: 6, q: 'O modelo de negócio da Zara assenta num princípio de BPM que a distingue radicalmente da concorrência de moda tradicional (que desenha coleções estáticas com 9 meses de antecedência). Esse princípio motor é:', opts: [{k:'a',t:'A reengenharia total de processos (BPR) a cada mudança de estação.'},{k:'b',t:'A padronização estática de tarefas criativas de nível estratégico.'},{k:'c',t:'O fabrico acoplado a lotes de pequena dimensão (Small batches) disparados por feedback transacional em tempo real das lojas.'},{k:'d',t:'A externalização de todo o núcleo ERP para fornecedores na nuvem.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Slide 4 (BPM). A Zara opera por "Melhoria Contínua" ágil. Produz pouco, lê as caixas registadoras (TPS) e ajusta o corte na fábrica na hora.' },
+            { id: 7, q: 'No motor de Workflow da empresa, a regra de negócio "Se o cliente tiver dívidas pendentes, a nota de encomenda fica bloqueada para análise" foi desenhada pelo analista no ecrã de modelação através de uma comporta lógica (Gateway) BPMN. Esta regra foi estipulada em:', opts: [{k:'a',t:'Run-time.'},{k:'b',t:'Build-time (Tempo de Construção / Modelação).'},{k:'c',t:'Extract, Transform, and Load (ETL).'},{k:'d',t:'Customer-facing analytics.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Slide 4. Desenhar, parametrizar e prever a regra no ecrã = Build-time. O cliente a ficar com a encomenda retida na vida real = Run-time.' },
+            { id: 8, q: 'Uma sociedade de advogados lida com litígios fiscais únicos e de altíssimo risco. O conhecimento gerado em cada defesa assenta na astúcia retórica e na interpretação singular de cada sócio sênior. Para gerir este património, a estratégia de KM deve focar-se numa:', opts: [{k:'a',t:'Estratégia de Codificação, obrigando a verter as teses para bases de dados SQL.'},{k:'b',t:'Estratégia de Personalização, promovendo mentorias de mestre-aprendiz e diretórios internos de peritos ("Páginas Amarelas").'},{k:'c',t:'Reengenharia Documental DMS orientada a Run-time.'},{k:'d',t:'Automação estocástica de processos de negócio.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Slide 5 (KMS). Conhecimento tácito, complexo e altamente dependente do contexto humano partilha-se ligando mentes a mentes (Personalização).' },
+            { id: 9, q: 'O departamento de Recursos Humanos quer uma plataforma para arquivar os relatórios médicos de acidentes de trabalho. O sistema tem de impedir a edição do ficheiro, registar quem o visualizou e destruir o PDF automaticamente passados 10 anos exatos por imposição legal. A ferramenta de SI ideal é:', opts: [{k:'a',t:'Um Content Management System (CMS) flexível.'},{k:'b',t:'Um Document Management System (DMS) orientado a conformidade (Compliance) e arquivo imutável.'},{k:'c',t:'Um Enterprise Resource Planning (ERP) de núcleo tático.'},{k:'d',t:'Um armazém multidimensional OLAP.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Slide 5. Trancar o ficheiro original, garantir trilhos de auditoria e gerir o ciclo de vida legal de um documento formal = DMS.' },
+            { id: 10, q: 'O Diretor de Marketing desabafa: "Temos terabytes de dados de cartões de fidelidade alojados no nosso Data Lake, mas continuamos a lançar campanhas baseadas na intuição do coordenador mais antigo". Este paradoxo ilustra que:', opts: [{k:'a',t:'O estrangulamento das organizações modernas moveu-se da captura de dados para a capacidade analítica e temporal de converter dados em decisões.'},{k:'b',t:'As bases de dados relacionais são incapazes de armazenar texto livre.'},{k:'c',t:'O modelo de alinhamento estratégico de Henderson & Venkatraman omite a estratégia de TI.'},{k:'d',t:'A IA prescritiva atingiu saturação na fronteira Supplier-facing.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'Slide 7. O diagnóstico contemporâneo: "Data-Rich, Decision-Poor". Guardar dados tornou-se trivial; ter tempo e agilidade para decidir é a nova escassez.' },
+            { id: 11, q: 'Um sistema de monitorização de painéis solares emite o alerta: "O inversor 4 da central Sul sobreaqueceu devido à acumulação de poeira extrema na grelha de ventilação". Na escada analítica lecionada, esta funcionalidade enquadra-se na analítica:', opts: [{k:'a',t:'Descritiva.'},{k:'b',t:'Diagnóstica (Diagnostic Analytics), pois deteta a causa raiz (o porquê) de uma anomalia passada.'},{k:'c',t:'Preditiva.'},{k:'d',t:'Prescritiva.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Slide 7. Explicar o motivo, a razão ou a origem de um problema histórico ("sobreaqueceu devido a...") = Analítica de Diagnóstico.' },
+            { id: 12, q: 'Uma transportadora aérea quer utilizar um algoritmo de Machine Learning para decidir, de forma totalmente autônoma e sem validação humana, quais os pilotos que entram em fadiga e ficam suspensos de levantar voo. À luz do Human-Centered AI, o gestor de SI deve propor:', opts: [{k:'a',t:'A substituição total (Replacement), eliminando a falibilidade humana do médico de serviço.'},{k:'b',t:'Um modelo de aumentação (Augmentation), onde o algoritmo tria a fadiga, mas a decisão de suspensão e a responsabilidade (Accountability) permanecem no Diretor de Voo.'},{k:'c',t:'O uso de um Large Language Model (LLM) para redigir o e-mail de suspensão.'},{k:'d',t:'A entrega da infraestrutura ao modelo FaaS.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'b', exp: 'Slide 7. Em cenários de alto risco (impacto na vida ou na moral dos colaboradores), a IA "aumenta" o diagnóstico; a responsabilização moral e legal fica no humano.' },
+            { id: 13, q: 'No Modelo de Alinhamento Estratégico (Henderson & Venkatraman), quando uma empresa adquire uma tecnologia revolucionária (ex: óculos de Realidade Aumentada para os técnicos) e, a partir dessa tecnologia, decide redefinir a sua estratégia de negócio e o seu preçário, ocorreu um alinhamento impulsionado pela:', opts: [{k:'a',t:'Estratégia de Tecnologia de Informação (IT Strategy as the driver).'},{k:'b',t:'Estratégia de Negócio tradicional.'},{k:'c',t:'Reengenharia de Processos BPR em Run-time.'},{k:'d',t:'Obsolescência do subsistema de processamento de transações.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'a', exp: 'Slide 8. Quando a inovação tecnológica dita o novo modelo de negócio da empresa (em vez de ser o negócio a encomendar a tecnologia).' },
+            { id: 14, q: 'O banco central decide alojar a sua base de dados na nuvem da AWS. O banco faz questão de gerir e atualizar o sistema operativo Windows Server, aplicar patches de segurança e configurar as redes virtuais, mas recusa-se a comprar o hardware físico. Que modelo Cloud contrataram?', opts: [{k:'a',t:'SaaS (Software as a Service).'},{k:'b',t:'PaaS (Platform as a Service).'},{k:'c',t:'IaaS (Infrastructure as a Service — entrega da infraestrutura bruta com controlo do SO).'},{k:'d',t:'BPaaS (Business Process as a Service).'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'Slide 8. Querer o controlo absoluto sobre o Sistema Operativo (Windows/Linux) e as redes virtuais sem ser dono do "ferro" = IaaS.' },
+            { id: 15, q: 'Um software de relatórios ambientais é instalado. Ele é excecionalmente simples de usar (Alta Facilidade de Uso), mas os diretores de departamento percebem que os dados lá colocados vão expor publicamente as falhas de poluição das suas divisões. Boicotam a plataforma. O TAM explica a rejeição porque:', opts: [{k:'a',t:'A Facilidade de Uso atua de forma inversamente proporcional à Utilidade.'},{k:'b',t:'O sistema colapsou no rácio de qualidade de DeLone & McLean.'},{k:'c',t:'A Utilidade Percecionada do ponto de vista do ator individual é nula ou negativa (traz-lhe risco político e nenhum ganho prático no trabalho).'},{k:'d',t:'O software foi modelado por raias de Run-time.'},{k:'e',t:'Não sei / Não respondo.'}], ans: 'c', exp: 'TAM. O ser humano nunca aceitará uma tecnologia (por mais fácil que seja) se a sua perceção íntima for de que o sistema serve para o prejudicar ou vigiar.' }
+        ];
+
+        const mcqDiv = document.getElementById('mcqContainer');
+        const form = document.getElementById('examForm');
+        let timerInterval;
+        let isExamLocked = false;
+
+        // 0. EXAM LOCK TOGGLE
+        function toggleExamMode() {
+            isExamLocked = !isExamLocked;
+            const btn = document.getElementById('lockBtn');
+            const dot = document.getElementById('lockDot');
+            const top = document.getElementById('topBar');
+
+            if(isExamLocked) {
+                document.body.classList.add('exam-mode');
+                btn.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-500"></span><span>Modo Foco: ON (Trancado)</span>`;
+                btn.className = 'px-3 py-1.5 bg-rose-950 text-rose-300 font-mono text-xs font-bold rounded-xl border border-rose-800 flex items-center gap-2 transition shadow-lg shadow-rose-500/20';
+                top.className = 'sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md border-b border-rose-900/50 shadow-2xl py-2 px-6 transition-all';
+            } else {
+                document.body.classList.remove('exam-mode');
+                btn.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span><span>Modo Foco: OFF</span>`;
+                btn.className = 'px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs font-bold rounded-xl border border-slate-700 flex items-center gap-2 transition';
+                top.className = 'sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl py-4 px-6 transition-all';
+            }
+        }
+
+        // 1. RENDERIZAR MCQ
+        mcqData.forEach((item, i) => {
+            const card = document.createElement('div');
+            card.className = 'bg-slate-900/90 border border-slate-800/80 rounded-2xl p-5 transition-all';
+            card.id = `card_${item.id}`;
+
+            let optsHtml = '';
+            item.opts.forEach(o => {
+                optsHtml += `
+                    <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-800/50 hover:bg-slate-800 cursor-pointer text-slate-300 transition">
+                        <input type="radio" name="q_${item.id}" value="${o.k}" onchange="updateCounters()" class="mt-0.5 accent-emerald-500">
+                        <span class="text-xs font-medium leading-relaxed"><b>${o.k})</b> ${o.t}</span>
+                    </label>
+                `;
+            });
+
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-3 font-mono">
+                    <span class="px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-xs rounded">Questão ${i+1}</span>
+                    <span class="text-[10px] text-slate-500">Cotação: +1.0 / -0.2</span>
+                </div>
+                <h3 class="text-xs font-bold text-white mb-4 leading-relaxed">${item.q}</h3>
+                <div class="space-y-2">${optsHtml}</div>
+                <div id="exp_${item.id}" class="hidden mt-4 bg-emerald-950/40 border border-emerald-800/60 p-3.5 rounded-xl text-xs text-emerald-200 leading-relaxed font-sans">
+                    <b class="text-emerald-400 block mb-1 uppercase tracking-wider text-[10px] font-mono">💡 Descodificação de Exame:</b>
+                    ${item.exp}
+                </div>
+            `;
+            mcqDiv.appendChild(card);
+        });
+
+        // 2. ATUALIZAR CONTADORES
+        function updateCounters() {
+            const fd = new FormData(form);
+            let count = 0;
+            for(let [k,v] of fd.entries()) { if(k.startsWith('q_') && v && v !== 'e') count++; }
+            document.getElementById('mcqCount').innerText = count;
+
+            const len1 = document.getElementById('txtD1').value.trim().length;
+            const len2 = document.getElementById('txtD2').value.trim().length;
+            const status = document.getElementById('essayStatus');
+
+            if(len1 > 40 && len2 > 40) { status.innerText = 'Rascunhados (OK)'; status.className = 'text-emerald-400 font-bold'; }
+            else if(len1 > 40 || len2 > 40) { status.innerText = 'Em Curso (1/2)'; status.className = 'text-amber-400'; }
+        }
+
+        document.getElementById('txtD1').addEventListener('input', updateCounters);
+        document.getElementById('txtD2').addEventListener('input', updateCounters);
+
+        // 3. CRONÓMETRO DE 90 MINUTOS
+        function startTimer() {
+            let t = 90 * 60;
+            const el = document.getElementById('timer');
+            timerInterval = setInterval(() => {
+                t--;
+                el.innerText = `${Math.floor(t/60).toString().padStart(2,'0')}:${(t%60).toString().padStart(2,'0')}`;
+                if(t <= 600) el.className = 'text-2xl font-mono font-black text-rose-500 animate-pulse tracking-tight';
+                if(t <= 0) { clearInterval(timerInterval); form.dispatchEvent(new Event('submit')); }
+            }, 1000);
+        }
+
+        let rawP1 = 0;
+
+        // 4. SUBMISSÃO DE PROVA
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            if(isExamLocked) toggleExamMode(); // Liberta o ecrã para ver a pauta
+
+            const fd = new FormData(form);
+            let certas = 0, erradas = 0;
+            const audit = document.getElementById('mcqAudit'); audit.innerHTML = '';
+
+            mcqData.forEach((item, idx) => {
+                const val = fd.get(`q_${item.id}`);
+                const card = document.getElementById(`card_${item.id}`);
+                card.querySelectorAll('input').forEach(i => i.disabled = true);
+                document.getElementById(`exp_${item.id}`).classList.remove('hidden');
+
+                if(!val || val === 'e') {
+                    card.classList.add('opacity-50', 'border-slate-800');
+                    audit.innerHTML += `<span class="p-1.5 bg-slate-900 text-slate-500 rounded text-center">Q${idx+1}: Branco</span>`;
+                } else if(val === item.ans) {
+                    certas++;
+                    card.classList.add('border-emerald-500/60', 'bg-emerald-950/10');
+                    card.querySelector(`input[value="${item.ans}"]`).parentElement.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-100', 'font-bold');
+                    audit.innerHTML += `<span class="p-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded text-center font-bold">Q${idx+1}: Certo</span>`;
+                } else {
+                    erradas++;
+                    card.classList.add('border-rose-500/60', 'bg-rose-950/10');
+                    card.querySelector(`input[value="${val}"]`).parentElement.classList.add('bg-rose-500/20', 'border-rose-500', 'text-rose-200', 'line-through');
+                    card.querySelector(`input[value="${item.ans}"]`).parentElement.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-100', 'font-bold');
+                    audit.innerHTML += `<span class="p-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded text-center">Q${idx+1}: Errado</span>`;
+                }
+            });
+
+            document.getElementById('txtD1').disabled = true;
+            document.getElementById('txtD2').disabled = true;
+            document.getElementById('rubricD1').classList.remove('hidden');
+            document.getElementById('rubricD2').classList.remove('hidden');
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerText = 'Exame Trancado';
+
+            rawP1 = Math.max(0, (certas * 1.0) - (erradas * 0.2));
+            document.getElementById('notaP1').innerText = rawP1.toFixed(1);
+            document.getElementById('nC').innerText = certas;
+            document.getElementById('nE').innerText = erradas;
+
+            document.getElementById('resultsBox').classList.remove('hidden');
+            evalEssay();
+            document.getElementById('resultsBox').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 5. MOTOR DE CORREÇÃO DE ENSAIO
+        function evalEssay() {
+            let d1 = 0, d2 = 0;
+            document.querySelectorAll('.chk-d1:checked').forEach(c => d1 += parseFloat(c.value));
+            document.querySelectorAll('.chk-d2:checked').forEach(c => d2 += parseFloat(c.value));
+
+            document.getElementById('scoreD1').innerText = d1.toFixed(1);
+            document.getElementById('pD1').innerText = d1.toFixed(1);
+            document.getElementById('scoreD2').innerText = d2.toFixed(1);
+            document.getElementById('pD2').innerText = d2.toFixed(1);
+
+            const p2Total = (d1 + d2);
+            document.getElementById('notaP2').innerText = p2Total.toFixed(1);
+
+            const nota20 = Math.min(20, Math.max(0, rawP1 + p2Total));
+            document.getElementById('notaFinal20').innerText = nota20.toFixed(1);
+
+            const badge = document.getElementById('badgePauta');
+            if(nota20 >= 18) {
+                badge.innerText = '🎖️ CONSAGRAÇÃO ABSOLUTA (NÍVEL DE DOCENTE)';
+                badge.className = 'text-xs font-black tracking-widest text-slate-950 uppercase mt-1 bg-emerald-400 px-3 py-1 rounded-full inline-block shadow-md';
+            } else if(nota20 >= 14) {
+                badge.innerText = '🛡️ DEFESA SÓLIDA DA MATRIZ SÓCIO-TÉCNICA';
+                badge.className = 'text-xs font-bold tracking-widest text-teal-200 uppercase mt-1';
+            } else {
+                badge.innerText = '⚠️ REQUER REVISÃO DE LITERACIA INFORMACIONAL';
+                badge.className = 'text-xs font-bold tracking-widest text-rose-300 uppercase mt-1';
+            }
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2025 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+<div class="social-links social-right">
+	    <a href="https://www.linkedin.com/in/andr%C3%A9-barbosa-b20a439/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2" />
+            <rect x="2" y="9" width="4" height="14" />
+            <circle cx="4" cy="4" r="2" />
+        </svg>
+    </a>
+
+    <a href="https://ciberlandia.pt/@Barbosa" target="_blank" rel="me noopener" aria-label="Mastodon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2c5 0 9 1 9 6v5c0 5-4 9-9 9s-9-4-9-9v-5c0-5 4-6 9-6z" />
+            <path d="M8 10v3m8-3v3m-4-3v3" stroke-linecap="round" />
+        </svg>
+    </a>
+
+    <a href="https://github.com/alchimista" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 0 0-3 19c.5.1.7-.2.7-.5v-2c-3 .7-3.6-1.5-3.6-1.5-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8a2 2 0 0 1 .6-1.3c-2.4-.3-5-1.2-5-5.4a4.2 4.2 0 0 1 1.1-3c-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 1a10.3 10.3 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .6 1.5.2 2.7.1 3a4.2 4.2 0 0 1 1.1 3c0 4.2-2.6 5.1-5 5.4a2.2 2.2 0 0 1 .6 1.6v2.4c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/>
+        </svg>
+    </a>
+
+    <a href="https://gitlab.wikimedia.org/alchimista" target="_blank" rel="noopener" aria-label="GitLab">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22l10-7-4-12-3 8h-6l-3-8-4 12z" />
+        </svg>
+    </a>
+
+<a href="https://pt.wikipedia.org/wiki/TEU_ARTIGO" target="_blank" rel="noopener" aria-label="Wikipedia">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+        <!-- Globo -->
+        <circle cx="12" cy="10" r="7" />
+
+        <!-- Fragmentação superior -->
+        <path d="M8 4l1.5 1.5" />
+        <path d="M12 3.5v2" />
+        <path d="M15 4l1.5 1.5" />
+
+        <!-- W a sair do globo -->
+        <path d="M7 10l2 7l4-5l8 5l2-8" />
+    </svg>
+</a>
+
+</a>
+
+</div>      </div>
+    </div>
+  </body>
+</html>

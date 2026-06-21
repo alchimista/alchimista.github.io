@@ -1,0 +1,532 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+  
+    <title></title>
+    <link rel="stylesheet" href="/static/new_style.css" type="text/css">
+    <link href="/feed.atom" rel="alternate" title="André Barbosa" type="application/atom+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="title" content="">
+    <meta property="og:title" content="">
+    <meta name="twitter:site" content="@alchimista">
+
+
+  
+  </head>
+  <body>
+    <div class=container>
+      <div class=header>
+        <a href="/"><b>Alchimista</b></a>
+      </div>
+      <div class=navigation>
+        <ul>
+          <li><a href="/blog/">blog</a>
+          <li><a href="/projetos/">projects</a>
+          <li><a href="/sobre/">about</a>
+        </ul>
+      </div>
+      <div class=body>
+        
+  <h2></h2>
+  <p>&lt;!DOCTYPE html&gt;</p>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Exame - Sistemas de Informação nas Organizações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para suavidade nas transições */
+        .option-label { transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans pb-16">
+
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-lg py-4 px-6 mb-8">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <h1 class="text-xl font-bold tracking-tight">SIO — Simulação de Exame (Parte II)</h1>
+                <p class="text-xs text-slate-400">Perspetiva Sócio-Técnica (Curry, Mutch, Simon)</p>
+            </div>
+            <div class="flex items-center gap-4 bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
+                <span class="text-sm font-medium text-slate-300">Tempo Restante:</span>
+                <span id="timer" class="text-xl font-mono font-bold text-amber-400">30:00</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4">
+
+        <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 rounded-r-lg shadow-sm">
+            <h2 class="font-bold text-blue-900 mb-1">Instruções de Prova:</h2>
+            <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
+                <li>Cada resposta certa vale <b>1,0 valor</b>.</li>
+                <li>Cada resposta errada desconta <b>0,2 valores</b> (20%).</li>
+                <li>A opção <i>"Não sei / Não respondo"</i> ou deixar em branco vale <b>0 valores</b>.</li>
+                <li>Garante a pontuação máxima: se hesitares no 50/50, tranca em branco!</li>
+            </ul>
+        </div>
+
+        <form id="quizForm" class="space-y-8">
+
+            <div id="questionsContainer" class="space-y-6"></div>
+
+            <div class="sticky bottom-4 z-40 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-slate-600">
+                    Respondidas: <span id="answeredCount" class="font-bold text-slate-900">0</span> / 15
+                </div>
+                <div class="flex gap-4 w-full sm:w-auto">
+                    <button type="button" onclick="resetQuiz()" class="flex-1 sm:flex-none px-6 py-3 rounded-lg border border-slate-300 hover:bg-slate-50 font-medium text-slate-700 transition">
+                        Limpar Tudo
+                    </button>
+                    <button type="submit" class="flex-1 sm:flex-none px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-200 transition">
+                        Entregar Exame
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+        <div id="resultsPanel" class="hidden mt-12 bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border-2 border-slate-800 text-center space-y-6 animate-fade-in">
+            <h2 class="text-2xl font-bold text-slate-900">Resumo de Desempenho</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+                    <div class="text-2xl font-black text-emerald-600" id="resCertas">0</div>
+                    <div class="text-xs text-emerald-800 font-medium">Certas (+1.0)</div>
+                </div>
+                <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl">
+                    <div class="text-2xl font-black text-rose-600" id="resErradas">0</div>
+                    <div class="text-xs text-rose-800 font-medium">Erradas (-0.2)</div>
+                </div>
+                <div class="bg-slate-100 border border-slate-200 p-4 rounded-xl">
+                    <div class="text-2xl font-black text-slate-600" id="resBrancas">0</div>
+                    <div class="text-xs text-slate-700 font-medium">Não Respondeu (0)</div>
+                </div>
+                <div class="bg-blue-600 text-white p-4 rounded-xl shadow-md">
+                    <div class="text-2xl font-black" id="resNota">0.0</div>
+                    <div class="text-xs font-medium text-blue-100">Nota Final / 15</div>
+                </div>
+            </div>
+            <p id="resMensagem" class="text-lg font-medium text-slate-700"></p>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-6 py-2 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition">
+                Revisar Correção Abaixo ↓
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // Base de Dados das 15 Questões Avançadas
+        const quizData = [
+            {
+                id: 1,
+                question: 'Um gestor de logística de uma cadeia de supermercados recusa um relatório de previsão de rutura de stock, justificando: "Os cálculos estatísticos parecem-me imaculados, mas estes dados referem-se aos padrões de consumo de há dois anos, o que inviabiliza completamente o meu planeamento para a próxima semana". Qual dos critérios de Qualidade da Informação falhou criticamente neste cenário?',
+                options: [
+                    { key: 'a', text: 'Fiabilidade (Reliability).' },
+                    { key: 'b', text: 'Acessibilidade (Accessibility).' },
+                    { key: 'c', text: 'Tempestividade / Atualidade (Timeliness).' },
+                    { key: 'd', text: 'Exatidão (Accuracy).' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'c',
+                explanation: 'Dados com 2 anos de idade falham o rácio temporal (Timeliness), mesmo que sejam 100% exatos (Accuracy).'
+            },
+            {
+                id: 2,
+                question: 'Na perspetiva de Alistair Mutch sobre a literacia de informação, qual das seguintes afirmações descreve corretamente a principal crítica teórica à pirâmide linear tradicional DIKW (Dados → Informação → Conhecimento)?',
+                options: [
+                    { key: 'a', text: 'O modelo linear ignora que é necessário existir Conhecimento prévio na organização para conseguir criar, selecionar e interpretar os dados brutos em primeiro lugar.' },
+                    { key: 'b', text: 'A progressão de dados para conhecimento é um fenómeno puramente de hardware, dependente da capacidade de processamento dos servidores.' },
+                    { key: 'c', text: 'O modelo assume que a informação não-estruturada não pode ser convertida em conhecimento tácito.' },
+                    { key: 'd', text: 'A hierarquia DIKW só funciona em sistemas interorganizacionais orientados para o fornecedor (Supplier-facing).' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'a',
+                explanation: 'Mutch (Cap. 3). O conhecimento não é o "fim da linha"; é o ponto de partida que permite ao cérebro humano conceber a recolha do dado.'
+            },
+            {
+                id: 3,
+                question: 'Um banco comercial adquire um moderno pacote de software ERP financeiro. Para acelerar o projeto, a administração decide não parametrizar o software, ordenando que os gestores de conta alterem radicalmente as suas rotinas informais de aprovação de crédito para se ajustarem rigidamente ao ecrã do sistema. À luz de Curry et al., qual é o maior risco desta decisão?',
+                options: [
+                    { key: 'a', text: 'A imediata saturação do pipeline transacional de extração ETL.' },
+                    { key: 'b', text: 'Uma severa falha de alinhamento (Fit) estrutural e cultural, provocando resistência ativa, boicote ou a proliferação de folhas Excel paralelas.' },
+                    { key: 'c', text: 'A conversão acidental de analítica de diagnóstico em analítica prescritiva.' },
+                    { key: 'd', text: 'A violação das normas de encriptação do modelo IaaS.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Curry. Forçar rotinas humanas a dobrarem-se à rigidez de um software comercial gera fricção, perda de moral e rejeição (falha de Fit).'
+            },
+            {
+                id: 4,
+                question: 'O CEO de uma companhia de seguros verifica que o processo de aceitação de novos clientes passa por 12 departamentos, envolve validações em papel e demora 25 dias. Frustrado, ordena: "Não tentem remendar ou automatizar o que fazemos hoje. Quero deitar este desenho no lixo, assumir uma folha em branco (clean sheet) e redesenhar o processo do zero para demorar 4 horas". Esta diretriz exemplifica:',
+                options: [
+                    { key: 'a', text: 'Melhoria Contínua orientada por pequenos lotes (Small batches / Kaizen).' },
+                    { key: 'b', text: 'Reengenharia de Processos de Negócio (BPR - Business Process Reengineering).' },
+                    { key: 'c', text: 'Modelação visual de Workflows na fase de Run-time.' },
+                    { key: 'd', text: 'Adoção de um Sistema de Gestão Documental (DMS) estático.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 4. Rasgar o passado, folha em branco (Clean sheet) e redesenhar do zero para ganhos exponenciais = BPR. (Se fossem pequenos ajustes diários, seria Melhoria Contínua / Kaizen).'
+            },
+            {
+                id: 5,
+                question: 'Uma construtora civil possui nos seus servidores centenas de relatórios geológicos em PDF, milhares de fotografias de fiscalização de obras e gravações de reuniões de planeamento no Zoom. Assumindo a métrica de que cerca de 80% da informação empresarial é Não-Estruturada, a categoria de SI ideal para gerir este património é:',
+                options: [
+                    { key: 'a', text: 'Um Enterprise Resource Planning (ERP) de núcleo operacional.' },
+                    { key: 'b', text: 'Um Online Transaction Processing (OLTP) de dados formatados.' },
+                    { key: 'c', text: 'Um Enterprise Content Management (ECM) / Sistema de Gestão Documental.' },
+                    { key: 'd', text: 'Um Supply Chain Management (SCM) focado no cliente.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'c',
+                explanation: 'Slide 5. Documentos soltos, vídeos e áudios são geridos por plataformas ECM (Enterprise Content Management).'
+            },
+            {
+                id: 6,
+                question: 'Um hospital pondera instalar um algoritmo de Inteligência Artificial para analisar TACs e decidir, de forma totalmente autônoma e sem validação humana, quais os pacientes com tumores cerebrais que vão diretamente para a mesa de operações. Com base no conceito de Human-Centered AI e nas normas de risco do EU AI Act, a posição do Diretor de SI deve ser:',
+                options: [
+                    { key: 'a', text: 'Aceitar a substituição total (Replacement), pois as redes neuronais atingiram fiabilidade factual absoluta.' },
+                    { key: 'b', text: 'Travar a substituição e propor um modelo de Aumentação (Augmentation), onde a IA tria os dados e destaca anomalias, mas o julgamento e a responsabilização (accountability) permanecem no médico.' },
+                    { key: 'c', text: 'Entregar a decisão a um Large Language Model (LLM) para garantir a empatia do diagnóstico gerado.' },
+                    { key: 'd', text: 'Alojar a IA num servidor local isolado da arquitetura Cloud.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 7. Em decisões de alto risco (vida ou morte, grandes investimentos), a IA serve para Aumentar (Augmentation) a capacidade humana, nunca para a substituir cega e desresponsabilizadamente.'
+            },
+            {
+                id: 7,
+                question: 'Para que os diretores de uma multinacional de retalho consigam rodar "Cubos Multidimensionais" (ex: analisar Vendas de Laticínios vs. Margem vs. Região Norte vs. 3º Trimestre) em segundos, os dados em bruto capturados nas caixas das lojas (OLTP) necessitam de ser extraídos, limpos e consolidados num Data Warehouse. O mecanismo técnico que executa esta ponte de limpeza é:',
+                options: [
+                    { key: 'a', text: 'O protocolo de Reengenharia BPR.' },
+                    { key: 'b', text: 'O motor algorítmico de alucinação estocástica.' },
+                    { key: 'c', text: 'O processo de Extract, Transform, and Load (ETL).' },
+                    { key: 'd', text: 'O módulo de automação de força de vendas (CRM).' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'c',
+                explanation: 'Slide 8. O canalizador transacional-analítico: ETL (Extract, Transform, Load).'
+            },
+            {
+                id: 8,
+                question: 'Uma firma de consultoria de gestão de topo resolve problemas estratégicos únicos para governos e multinacionais. O sócio-gerente afirma: "O nosso conhecimento crítico está na astúcia de negociação e no instinto político de cada consultor sênior; isso não cabe em bases de dados". Para gerir este ativo de conhecimento tácito, a empresa deve focar-se numa:',
+                options: [
+                    { key: 'a', text: 'Estratégia de Codificação, injetando os casos num repositório explícito.' },
+                    { key: 'b', text: 'Estratégia de Personalização, investindo em redes de contacto interno, mentorias de mestre-aprendiz e diretórios de peritos ("Páginas Amarelas").' },
+                    { key: 'c', text: 'Migração de toda a arquitetura de software para o modelo FaaS (Function as a Service).' },
+                    { key: 'd', text: 'Padronização de rotinas de trabalho de nível operacional.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 5 (KMS). Conhecimento enraizado na experiência e intuição humana partilha-se ligando pessoas a pessoas (Personalização).'
+            },
+            {
+                id: 9,
+                question: 'Um gestor de compras dispõe de apenas duas horas para fechar a aquisição de 10 mil embalagens de vidro. Sabendo que não tem tempo nem capacidade cognitiva para analisar os preçários dos 150 fabricantes europeus, analisa os quatro primeiros da lista e adjudica a encomenda ao que cumpre o rácio mínimo aceitável de preço e qualidade. Segundo Herbert Simon, este gestor agiu sob:',
+                options: [
+                    { key: 'a', text: 'Otimização prescritiva de tarefas de armazém.' },
+                    { key: 'b', text: 'Racionalidade Limitada (Bounded Rationality) e procura de uma solução satisfatória (Satisficing).' },
+                    { key: 'c', text: 'Racionalidade Econômica Pura de maximização absoluta de ativos.' },
+                    { key: 'd', text: 'O efeito de dissonância do modelo de aceitação TAM.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Simon. O ser humano tem limites de tempo e informação; toma decisões satisfatórias (Satisficing) em vez de ótimas.'
+            },
+            {
+                id: 10,
+                question: 'Uma startup de videojogos precisa de uma infraestrutura para alojar os jogos multiplayer. Os programadores não querem comprar servidores físicos nem instalar sistemas operativos, mas fazem questão de ter controlo absoluto sobre a configuração da base de dados e do motor de execução onde o código do jogo vai correr. O modelo de serviço Cloud adequado é:',
+                options: [
+                    { key: 'a', text: 'SaaS (Software as a Service).' },
+                    { key: 'b', text: 'IaaS (Infrastructure as a Service).' },
+                    { key: 'c', text: 'PaaS (Platform as a Service).' },
+                    { key: 'd', text: 'BPaaS (Business Process as a Service).' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'c',
+                explanation: 'Slide 8. Querem a plataforma de execução e as bases de dados prontas, mas sem gerir o ferro/hardware = PaaS (Platform as a Service).'
+            },
+            {
+                id: 11,
+                question: 'Um relatório de consultoria entregue à administração de uma rede de ginásios contém a seguinte observação: "A elevada rotatividade de clientes deriva de uma norma cultural implícita dos instrutores, que dão atenção exclusiva aos clientes que estão em excelente forma física". Na taxonomia das dimensões da informação, este extrato representa:',
+                options: [
+                    { key: 'a', text: 'Conteúdo Descritivo de regras e restrições de negócio.' },
+                    { key: 'b', text: 'Conteúdo Probabilístico baseado em inferência de amostras.' },
+                    { key: 'c', text: 'Conteúdo Explicativo e Avaliativo (Explanatory and evaluative content).' },
+                    { key: 'd', text: 'Apresentação Quantitativa e Formal.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'c',
+                explanation: 'Tabela 2.6. Descrever atitudes, preconceitos ou normas implícitas de comportamento de um grupo = Conteúdo Explicativo/Avaliativo.'
+            },
+            {
+                id: 12,
+                question: 'Na arquitetura piramidal dos Sistemas de Informação nas organizações, qual é a característica vital que define os Sistemas de Processamento de Transações (TPS)?',
+                options: [
+                    { key: 'a', text: 'São sistemas de nível estratégico desenhados para capturar informação externa não-estruturada sobre a concorrência.' },
+                    { key: 'b', text: 'Situam-se na base operacional, registando os eventos rotineiros e elementares do dia a dia (vendas, horas de trabalho), sendo os alimentadores críticos de dados para os sistemas superiores (MIS e DSS).' },
+                    { key: 'c', text: 'São motores de Inteligência Artificial generativa de uso exclusivo no Front-office.' },
+                    { key: 'd', text: 'Operam unicamente na fronteira Supplier-facing.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 2. O TPS é o operário da fábrica de dados; sem o registo fidedigno na base transacional, os painéis dos administradores no topo mostram ilusões.'
+            },
+            {
+                id: 13,
+                question: 'A literatura lecionada sublinha que o problema central da gestão moderna mudou: as empresas tornaram-se "Data-rich, decision-poor". Qual é a justificação estrutural para este diagnóstico?',
+                options: [
+                    { key: 'a', text: 'A legislação europeia proibiu o armazenamento de Big Data em nuvens públicas.' },
+                    { key: 'b', text: 'O estrangulamento deixou de ser a falta e a captura de dados (resolvida pelos ERPs) e passou a ser a escassez de tempo e capacidade analítica para converter essa montanha de dados em decisões acionáveis.' },
+                    { key: 'c', text: 'Os algoritmos de Machine Learning falharam na conversão de dados formatados.' },
+                    { key: 'd', text: 'Os gestores operacionais abandonaram a racionalidade satisfatória.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 7. Temos oceanos de dados acumulados nos discos rígidos, mas continuamos sem agilidade para os transformar em decisões de negócio.'
+            },
+            {
+                id: 14,
+                question: 'Uma cadeia de distribuição farmacêutica lança um portal web para as farmácias encomendarem medicamentos. Os farmacêuticos reconhecem que o portal é vital para evitarem ruturas de stock (Alta Utilidade Percecionada), mas recusam-se a utilizá-lo porque o sistema obriga a preencher códigos de 18 dígitos à mão sem opção de pesquisa por nome. Segundo o modelo TAM de Davis, a rejeição é explicada por:',
+                options: [
+                    { key: 'a', text: 'Baixa Facilidade de Uso Percecionada (Perceived Ease of Use), que atua como um bloqueio intransponível à adoção prática da tecnologia.' },
+                    { key: 'b', text: 'Um desvio no rácio de qualidade do modelo de DeLone & McLean.' },
+                    { key: 'c', text: 'Reengenharia de processos mal executada na fronteira Customer-facing.' },
+                    { key: 'd', text: 'Excesso de informação descritiva no ecrã de login.' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'a',
+                explanation: 'TAM. Se a tecnologia dá muito trabalho a operar (Baixa Facilidade de Uso), o utilizador descarta-a, por mais útil que ela seja no papel.'
+            },
+            {
+                id: 15,
+                question: 'No software Bizagi, um engenheiro de processos acabou de desenhar o diagrama BPMN de aprovação de férias, definindo as raias, as exceções e os e-mails automáticos de notificação. Carrega no botão "Publicar no Servidor". Duas semanas depois, a Ana acede ao portal da empresa e submete o seu pedido de férias para o mês de Agosto. No exato momento em que a Ana clica em "Submeter Pedido", o fluxo do processo encontra-se na fase de:',
+                options: [
+                    { key: 'a', text: 'Build-time (Tempo de Modelação).' },
+                    { key: 'b', text: 'Run-time (Tempo de Execução).' },
+                    { key: 'c', text: 'Process Mining (Mineração de Processos).' },
+                    { key: 'd', text: 'Extract, Transform and Load (ETL).' },
+                    { key: 'e', text: 'Não sei / Não respondo.' }
+                ],
+                answer: 'b',
+                explanation: 'Slide 4. Desenhar caixas no software = Build-time. A Ana a fazer o pedido real acontecer na vida real = Run-time.'
+            }
+        ];
+
+        const container = document.getElementById('questionsContainer');
+        const answeredSpan = document.getElementById('answeredCount');
+        const form = document.getElementById('quizForm');
+        let timerInterval;
+
+        // Renderizar Questões
+        function renderQuestions() {
+            container.innerHTML = '';
+            quizData.forEach((q, idx) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'bg-white p-6 rounded-xl shadow-sm border border-slate-200 transition';
+                qDiv.id = `q-card-${q.id}`;
+
+                let optionsHtml = '';
+                q.options.forEach(opt => {
+                    optionsHtml += `
+                        <label class="option-label flex items-start gap-3 p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer text-slate-700">
+                            <input type="radio" name="q_${q.id}" value="${opt.key}" onchange="countAnswered()" class="mt-1 accent-blue-600">
+                            <span class="text-sm font-medium"><b>${opt.key})</b> ${opt.text}</span>
+                        </label>
+                    `;
+                });
+
+                qDiv.innerHTML = `
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <span class="px-2.5 py-1 bg-blue-100 text-blue-800 font-bold text-xs rounded">Questão ${idx + 1}</span>
+                        <span class="text-xs text-slate-400 font-mono">Cotação: ±1.0 / -0.2</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 mb-4">${q.question}</h3>
+                    <div class="space-y-2">
+                        ${optionsHtml}
+                    </div>
+                    <div id="exp_${q.id}" class="hidden mt-4 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r text-xs text-amber-900">
+                        <b class="text-amber-950 uppercase tracking-wider block mb-1">💡 Gabarito e Explicação:</b>
+                        ${q.explanation}
+                    </div>
+                `;
+                container.appendChild(qDiv);
+            });
+        }
+
+        // Contar Respostas Selecionadas
+        function countAnswered() {
+            const formData = new FormData(form);
+            let count = 0;
+            for (let [key, val] of formData.entries()) {
+                if (val && val !== 'e') count++; // 'e' é equivalente a branco na contagem ativa
+            }
+            answeredSpan.innerText = count;
+        }
+
+        // Cronómetro
+        function startTimer(durationMinutes) {
+            clearInterval(timerInterval);
+            let time = durationMinutes * 60;
+            const timerEl = document.getElementById('timer');
+
+            timerInterval = setInterval(() => {
+                time--;
+                let mins = Math.floor(time / 60);
+                let secs = time % 60;
+                timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (time <= 300) {
+                    timerEl.classList.remove('text-amber-400');
+                    timerEl.classList.add('text-rose-500', 'animate-pulse');
+                }
+
+                if (time <= 0) {
+                    clearInterval(timerInterval);
+                    alert('⏰ O tempo terminou! O exame será entregue automaticamente.');
+                    form.dispatchEvent(new Event('submit'));
+                }
+            }, 1000);
+        }
+
+        // Submeter e Corrigir
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+
+            const formData = new FormData(form);
+            let certas = 0;
+            let erradas = 0;
+            let brancas = 0;
+
+            quizData.forEach(q => {
+                const userChoice = formData.get(`q_${q.id}`);
+                const card = document.getElementById(`q-card-${q.id}`);
+                const expBox = document.getElementById(`exp_${q.id}`);
+
+                // Desativar inputs para trancar o teste
+                card.querySelectorAll('input').forEach(inp => inp.disabled = true);
+                expBox.classList.remove('hidden');
+
+                if (!userChoice || userChoice === 'e') {
+                    brancas++;
+                    card.classList.add('border-slate-300', 'bg-slate-50');
+                } else if (userChoice === q.answer) {
+                    certas++;
+                    card.classList.add('border-emerald-500', 'bg-emerald-50/20');
+                    // Destacar a certa
+                    card.querySelector(`input[value="${q.answer}"]`).parentElement.classList.add('bg-emerald-100', 'border-emerald-400', 'text-emerald-900', 'font-bold');
+                } else {
+                    erradas++;
+                    card.classList.add('border-rose-500', 'bg-rose-50/20');
+                    // Destacar a errada escolhida
+                    card.querySelector(`input[value="${userChoice}"]`).parentElement.classList.add('bg-rose-100', 'border-rose-400', 'text-rose-900', 'line-through');
+                    // Mostrar a que era correta
+                    card.querySelector(`input[value="${q.answer}"]`).parentElement.classList.add('bg-emerald-100', 'border-emerald-400', 'text-emerald-900', 'font-bold');
+                }
+            });
+
+            // Matemática da Nota
+            const notaFinal = Math.max(0, (certas * 1.0) - (erradas * 0.2)).toFixed(1);
+
+            document.getElementById('resCertas').innerText = certas;
+            document.getElementById('resErradas').innerText = erradas;
+            document.getElementById('resBrancas').innerText = brancas;
+            document.getElementById('resNota').innerText = notaFinal;
+
+            const msgEl = document.getElementById('resMensagem');
+            if (notaFinal >= 16) {
+                msgEl.innerHTML = '🎉 <b>EXCECIONAL!</b> Estás com nível de topo para romper a barreira dos 16+ no exame!';
+                msgEl.className = 'text-lg font-bold text-emerald-600';
+            } else if (notaFinal >= 12) {
+                msgEl.innerHTML = '👍 <b>Muito Bom!</b> O exame está no papo, agora é limar as justificações de desenvolvimento.';
+                msgEl.className = 'text-lg font-bold text-blue-600';
+            } else {
+                msgEl.innerHTML = '⚠️ <b>Atenção à Gestão de Risco:</b> Arriscaste em perguntas que devias ter deixado em branco!';
+                msgEl.className = 'text-lg font-bold text-amber-600';
+            }
+
+            document.getElementById('resultsPanel').classList.remove('hidden');
+            document.getElementById('resultsPanel').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Reiniciar
+        function resetQuiz() {
+            if(confirm('Queres mesmo limpar as tuas respostas e recomeçar o cronómetro?')) {
+                form.reset();
+                document.getElementById('resultsPanel').classList.add('hidden');
+                answeredSpan.innerText = '0';
+                renderQuestions();
+                startTimer(30);
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // Inicializar
+        renderQuestions();
+        startTimer(30);
+    </script>
+</body>
+</html>
+
+      </div>
+      <div class=footer>
+        <p>&copy; Copyright 2025 Alchimista.
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        <p>
+<div class="social-links social-right">
+	    <a href="https://www.linkedin.com/in/andr%C3%A9-barbosa-b20a439/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2" />
+            <rect x="2" y="9" width="4" height="14" />
+            <circle cx="4" cy="4" r="2" />
+        </svg>
+    </a>
+
+    <a href="https://ciberlandia.pt/@Barbosa" target="_blank" rel="me noopener" aria-label="Mastodon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2c5 0 9 1 9 6v5c0 5-4 9-9 9s-9-4-9-9v-5c0-5 4-6 9-6z" />
+            <path d="M8 10v3m8-3v3m-4-3v3" stroke-linecap="round" />
+        </svg>
+    </a>
+
+    <a href="https://github.com/alchimista" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 0 0-3 19c.5.1.7-.2.7-.5v-2c-3 .7-3.6-1.5-3.6-1.5-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8a2 2 0 0 1 .6-1.3c-2.4-.3-5-1.2-5-5.4a4.2 4.2 0 0 1 1.1-3c-.1-.3-.5-1.5.1-3 0 0 .9-.3 3 1a10.3 10.3 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .6 1.5.2 2.7.1 3a4.2 4.2 0 0 1 1.1 3c0 4.2-2.6 5.1-5 5.4a2.2 2.2 0 0 1 .6 1.6v2.4c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/>
+        </svg>
+    </a>
+
+    <a href="https://gitlab.wikimedia.org/alchimista" target="_blank" rel="noopener" aria-label="GitLab">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22l10-7-4-12-3 8h-6l-3-8-4 12z" />
+        </svg>
+    </a>
+
+<a href="https://pt.wikipedia.org/wiki/TEU_ARTIGO" target="_blank" rel="noopener" aria-label="Wikipedia">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+        <!-- Globo -->
+        <circle cx="12" cy="10" r="7" />
+
+        <!-- Fragmentação superior -->
+        <path d="M8 4l1.5 1.5" />
+        <path d="M12 3.5v2" />
+        <path d="M15 4l1.5 1.5" />
+
+        <!-- W a sair do globo -->
+        <path d="M7 10l2 7l4-5l8 5l2-8" />
+    </svg>
+</a>
+
+</a>
+
+</div>      </div>
+    </div>
+  </body>
+</html>
